@@ -2,11 +2,11 @@
 // import { Route, Routes } from "react-router-dom";
 
 const AppRoutes = () => (
-    <div></div>
-//   <Routes>
-//     <Route path="countries" element="countries" />
-//     <Route path="tournaments" element="Tournaments" />
-//   </Routes>
+  <div></div>
+  //   <Routes>
+  //     <Route path="home" element="home" />
+  //     <Route path="orders" element="Orders" />
+  //   </Routes>
 );
 
 export default AppRoutes;
