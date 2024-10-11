@@ -1,26 +1,30 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import * as React from 'react';
+import { PageContainer } from '@toolpad/core/PageContainer';
+import { AppProvider } from '@toolpad/core/AppProvider';
+import { useDemoRouter } from '@toolpad/core/internals';
+import { useTheme } from '@mui/material/styles';
+import Paper from '@mui/material/Paper';
+import RecipeReviewCard from './RecipeReviewCard';
 
-function App() {
+const NAVIGATION = [
+  { segment: '', title: 'Home' },
+  { segment: 'orders', title: 'Orders' },
+];
+
+export default function App() {
+  const router = useDemoRouter('/orders');
+
+  const theme = useTheme();
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <AppProvider navigation={NAVIGATION} router={router} theme={theme}>
+      <Paper sx={{ width: '100%' }}>
+        {/* preview-start */}
+        <PageContainer>
+          <RecipeReviewCard/>
+        </PageContainer>
+        {/* preview-end */}
+      </Paper>
+    </AppProvider>
   );
 }
-
-export default App;
