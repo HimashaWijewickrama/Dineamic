@@ -1,15 +1,9 @@
-import * as React from "react";
-import { styled } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import ButtonBase from "@mui/material/ButtonBase";
+import { styled } from "@mui/material/styles";
 import Typography from "@mui/material/Typography";
 
 const images = [
-  // {
-  //   url: '/static/images/buttons/breakfast.jpg',
-  //   title: 'Breakfast',
-  //   width: '40%',
-  // },
   {
     url: "https://images.unsplash.com/photo-1447078806655-40579c2520d6?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     title: "ORDER NOW",
@@ -21,7 +15,7 @@ const ImageButton = styled(ButtonBase)(({ theme }) => ({
   position: "relative",
   height: 500,
   [theme.breakpoints.down("sm")]: {
-    width: "100% !important", // Overrides inline-style
+    width: "100% !important", 
     height: 250,
   },
   "&:hover, &.Mui-focusVisible": {
@@ -81,7 +75,7 @@ const ImageMarked = styled("span")(({ theme }) => ({
   transition: theme.transitions.create("opacity"),
 }));
 
-export default function ButtonBaseDemo() {
+export default function LandingPage() {
   return (
     <Box
       sx={{ display: "flex", flexWrap: "wrap", minWidth: 300, width: "100%" }}

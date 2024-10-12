@@ -1,21 +1,20 @@
-import * as React from "react";
-import Box from "@mui/material/Box";
 import Rating from "@mui/material/Rating";
 import { styled } from "@mui/material/styles";
+import * as React from "react";
 
+interface RatingProps {
+  ratingvalue: number;
+}
 const Div = styled("div")(({ theme }) => ({
   ...theme.typography.button,
   backgroundColor: theme.palette.background.paper,
-  paddingLeft: theme.spacing(14),
   paddingTop: theme.spacing(2),
 }));
 
-export default function BasicRating() {
-  const [value, setValue] = React.useState<number | null>(2);
-
+export const RatingProduct: React.FC<RatingProps> = ({ ratingvalue }) => {
   return (
     <Div>
-      <Rating name="read-only" value={value} readOnly />
+      <Rating name="read-only" value={ratingvalue} readOnly />
     </Div>
   );
-}
+};

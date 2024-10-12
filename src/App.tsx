@@ -1,13 +1,10 @@
-import * as React from "react";
-import { PageContainer } from "@toolpad/core/PageContainer";
+import Paper from "@mui/material/Paper";
+import { useTheme } from "@mui/material/styles";
 import { AppProvider } from "@toolpad/core/AppProvider";
 import { useDemoRouter } from "@toolpad/core/internals";
-import { useTheme } from "@mui/material/styles";
-import Paper from "@mui/material/Paper";
-import RecipeReviewCard from "./RecipeReviewCard";
-import Badge from "@mui/material/Badge";
-import ButtonBaseDemo from "./ButtonBaseDemo";
-import RouterBreadcrumbs from "./AppTopBar";
+import { PageContainer } from "@toolpad/core/PageContainer";
+import RouterBreadcrumbs from "./Components/AppTopBar";
+import ButtonBaseDemo from "./Pages/LandingPage";
 import MenuItems from "./Pages/MenuItems";
 
 const NAVIGATION = [
@@ -23,18 +20,12 @@ export default function App() {
   return (
     <>
       <ButtonBaseDemo />
-      <RouterBreadcrumbs/>
-
+      <RouterBreadcrumbs />
       <AppProvider navigation={NAVIGATION} router={router} theme={theme}>
         <Paper sx={{ width: "100%" }}>
-          {/* preview-start */}
           <PageContainer>
-            {/* <Badge color="secondary" badgeContent="1"> */}
-              {/* <RecipeReviewCard /> */}
-              <MenuItems/>
-            {/* </Badge> */}
+            <MenuItems />
           </PageContainer>
-          {/* preview-end */}
         </Paper>
       </AppProvider>
     </>

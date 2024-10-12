@@ -1,10 +1,17 @@
-import * as React from "react";
+import { Typography } from "@mui/material";
 import Divider from "@mui/material/Divider";
 import Paper from "@mui/material/Paper";
 import Stack from "@mui/material/Stack";
 import { styled } from "@mui/material/styles";
-import { Typography } from "@mui/material";
+import * as React from "react";
 
+interface ProductPriceProps {
+  prodprice: string;
+  prodquantity: string;
+  prodprotein: string;
+  prodfat: string;
+  prodcarb: string;
+}
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: "#fff",
   ...theme.typography.body2,
@@ -21,7 +28,13 @@ const Div = styled("div")(({ theme }) => ({
   paddingLeft: theme.spacing(3),
   paddingTop: theme.spacing(2),
 }));
-export default function DividerStack() {
+export const ProductPrice: React.FC<ProductPriceProps> = ({
+  prodprice,
+  prodquantity,
+  prodprotein,
+  prodfat,
+  prodcarb,
+}) => {
   return (
     <Div>
       <Stack
@@ -35,7 +48,7 @@ export default function DividerStack() {
           sx={{ display: "block" }}
           style={{ fontWeight: 600, fontSize: "28px" }}
         >
-          $11.50
+          {prodprice}
         </Typography>
         <Typography
           variant="caption"
@@ -43,7 +56,7 @@ export default function DividerStack() {
           sx={{ display: "block" }}
           style={{ fontWeight: 600, fontSize: "28px" }}
         >
-          360g
+          {prodquantity}
         </Typography>
       </Stack>
       <br />
@@ -59,7 +72,7 @@ export default function DividerStack() {
             sx={{ display: "block" }}
             style={{ fontWeight: 600 }}
           >
-            38.6g
+            {prodprotein}
           </Typography>
           <Typography variant="caption" gutterBottom sx={{ display: "block" }}>
             Protein
@@ -72,7 +85,7 @@ export default function DividerStack() {
             sx={{ display: "block" }}
             style={{ fontWeight: 600 }}
           >
-            14.9g
+            {prodfat}
           </Typography>
           <Typography variant="caption" gutterBottom sx={{ display: "block" }}>
             Fat
@@ -85,7 +98,7 @@ export default function DividerStack() {
             sx={{ display: "block" }}
             style={{ fontWeight: 600 }}
           >
-            28.4g
+            {prodcarb}
           </Typography>
           <Typography variant="caption" gutterBottom sx={{ display: "block" }}>
             Carbs
@@ -94,4 +107,4 @@ export default function DividerStack() {
       </Stack>
     </Div>
   );
-}
+};
