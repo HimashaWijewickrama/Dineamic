@@ -15,6 +15,8 @@ import React, { useState } from "react";
 import { ProductDetail } from "./ProductDetail";
 import { ProductPrice } from "./ProductPrice";
 import { RatingProduct } from "./RatingProduct";
+import Tooltip from "@mui/material/Tooltip";
+import ClickAwayListener from "@mui/material/ClickAwayListener";
 
 const Item = styled(Paper)(({ theme }) => ({
   ...theme.typography.body2,
@@ -34,7 +36,12 @@ export const SingleProduct: React.FC<ProductProps> = ({
   prodimagealt,
 }) => {
   const [itemCount, setItemCount] = useState(0);
+  const [addFavourite, setAddFavourite] = useState(0);
+  const [open, setOpen] = React.useState(false);
 
+  const handleTooltipClose = () => {
+    setOpen(false);
+  };
   const OnClickAddItem = () => {
     setItemCount(itemCount + 1);
   };
@@ -45,13 +52,38 @@ export const SingleProduct: React.FC<ProductProps> = ({
       setItemCount(itemCount);
     }
   };
+  const OnClickAddFavourite = () => {
+    setAddFavourite(addFavourite + 1);
+    setOpen(true);
+  };
   return (
     <Card sx={{ maxWidth: 345 }} style={{ border: "1px solid #E8E8E8" }}>
       <CardHeader
         action={
-          <IconButton aria-label="add to favorites" color="secondary">
-            <FavoriteIcon />
-          </IconButton>
+          <>
+            <ClickAwayListener onClickAway={handleTooltipClose}>
+              <Tooltip
+                title={addFavourite}
+                PopperProps={{
+                  disablePortal: true,
+                }}
+                onClose={handleTooltipClose}
+                open={open}
+                disableFocusListener
+                disableHoverListener
+                disableTouchListener
+                arrow
+              >
+                <IconButton
+                  aria-label="add to favorites"
+                  color="secondary"
+                  onClick={OnClickAddFavourite}
+                >
+                  <FavoriteIcon />
+                </IconButton>
+              </Tooltip>
+            </ClickAwayListener>
+          </>
         }
         title={
           <Typography

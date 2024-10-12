@@ -3,9 +3,10 @@ import { useTheme } from "@mui/material/styles";
 import { AppProvider } from "@toolpad/core/AppProvider";
 import { useDemoRouter } from "@toolpad/core/internals";
 import { PageContainer } from "@toolpad/core/PageContainer";
-import RouterBreadcrumbs from "./Components/AppTopBar";
+import AppTopBar from "./Components/AppTopBar";
 import ButtonBaseDemo from "./Pages/LandingPage";
 import MenuItems from "./Pages/MenuItems";
+import LandingPage from "./Pages/LandingPage";
 
 const NAVIGATION = [
   { segment: "", title: "Home" },
@@ -19,8 +20,8 @@ export default function App() {
 
   return (
     <>
-      <ButtonBaseDemo />
-      <RouterBreadcrumbs />
+      <LandingPage />
+      <AppTopBar />
       <AppProvider navigation={NAVIGATION} router={router} theme={theme}>
         <Paper sx={{ width: "100%" }}>
           <PageContainer>

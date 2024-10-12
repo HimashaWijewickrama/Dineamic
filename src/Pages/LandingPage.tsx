@@ -13,7 +13,7 @@ const images = [
 
 const ImageButton = styled(ButtonBase)(({ theme }) => ({
   position: "relative",
-  height: 500,
+  height: 750,
   [theme.breakpoints.down("sm")]: {
     width: "100% !important", 
     height: 250,
