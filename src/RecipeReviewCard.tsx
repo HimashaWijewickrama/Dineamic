@@ -30,6 +30,7 @@ const Item = styled(Paper)(({ theme }) => ({
   //   backgroundColor: "#fff",
   ...theme.typography.body2,
   width: "100%",
+  border: "1px solid #1B2125",
   //   padding: theme.spacing(1),
   //   textAlign: "center",
   //   color: theme.palette.text.secondary,
@@ -70,7 +71,7 @@ export default function RecipeReviewCard() {
   };
 
   return (
-    <Card sx={{ maxWidth: 345 }}>
+    <Card sx={{ maxWidth: 345 }} style={{ border: "1px solid #1B2125" }}>
       <CardHeader
         action={
           <IconButton aria-label="add to favorites" color="secondary">

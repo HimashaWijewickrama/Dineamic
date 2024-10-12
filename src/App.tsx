@@ -7,6 +7,8 @@ import Paper from "@mui/material/Paper";
 import RecipeReviewCard from "./RecipeReviewCard";
 import Badge from "@mui/material/Badge";
 import ButtonBaseDemo from "./ButtonBaseDemo";
+import RouterBreadcrumbs from "./AppTopBar";
+import MenuItems from "./Pages/MenuItems";
 
 const NAVIGATION = [
   { segment: "", title: "Home" },
@@ -21,14 +23,16 @@ export default function App() {
   return (
     <>
       <ButtonBaseDemo />
+      <RouterBreadcrumbs/>
 
       <AppProvider navigation={NAVIGATION} router={router} theme={theme}>
         <Paper sx={{ width: "100%" }}>
           {/* preview-start */}
           <PageContainer>
-            <Badge color="secondary" badgeContent="1">
-              <RecipeReviewCard />
-            </Badge>
+            {/* <Badge color="secondary" badgeContent="1"> */}
+              {/* <RecipeReviewCard /> */}
+              <MenuItems/>
+            {/* </Badge> */}
           </PageContainer>
           {/* preview-end */}
         </Paper>
