@@ -11,7 +11,7 @@ import IconButton from "@mui/material/IconButton";
 import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
 import { styled } from "@mui/material/styles";
-import React from "react";
+import React, { useState } from "react";
 import { ProductDetail } from "./ProductDetail";
 import { ProductPrice } from "./ProductPrice";
 import { RatingProduct } from "./RatingProduct";
@@ -26,15 +26,25 @@ interface ProductProps {
   prodtitle: string;
   prodimageurl: string;
   prodimagealt: string;
-  prodcount: string;
 }
 
 export const SingleProduct: React.FC<ProductProps> = ({
   prodtitle,
   prodimageurl,
   prodimagealt,
-  prodcount,
 }) => {
+  const [itemCount, setItemCount] = useState(0);
+
+  const OnClickAddItem = () => {
+    setItemCount(itemCount + 1);
+  };
+  const OnClickRemoveItem = () => {
+    if (itemCount > 0) {
+      setItemCount(itemCount - 1);
+    } else {
+      setItemCount(itemCount);
+    }
+  };
   return (
     <Card sx={{ maxWidth: 345 }} style={{ border: "1px solid #E8E8E8" }}>
       <CardHeader
@@ -104,6 +114,7 @@ export const SingleProduct: React.FC<ProductProps> = ({
                     variant="outlined"
                     color="secondary"
                     sx={{ width: "30%" }}
+                    onClick={OnClickAddItem}
                   >
                     <AddShoppingCart /> Add
                   </Button>
@@ -114,12 +125,13 @@ export const SingleProduct: React.FC<ProductProps> = ({
                     disabled
                     style={{ color: "#000000", fontWeight: 600 }}
                   >
-                    {prodcount}
+                    {itemCount}
                   </Button>
                   <Button
                     variant="outlined"
                     color="secondary"
                     sx={{ width: "30%" }}
+                    onClick={OnClickRemoveItem}
                   >
                     <RemoveShoppingCart /> Remove
                   </Button>
