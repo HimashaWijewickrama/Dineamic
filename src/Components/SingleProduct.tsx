@@ -6,21 +6,13 @@ import CardHeader from "@mui/material/CardHeader";
 import CardMedia from "@mui/material/CardMedia";
 import ClickAwayListener from "@mui/material/ClickAwayListener";
 import IconButton from "@mui/material/IconButton";
-import Paper from "@mui/material/Paper";
 import Tooltip from "@mui/material/Tooltip";
 import Typography from "@mui/material/Typography";
-import { styled } from "@mui/material/styles";
 import React, { useState } from "react";
 import CartItemController from "./CartItemController";
 import { ProductDetail } from "./ProductDetail";
 import { ProductPrice } from "./ProductPrice";
 import { RatingProduct } from "./RatingProduct";
-
-const Item = styled(Paper)(({ theme }) => ({
-  ...theme.typography.body2,
-  width: "100%",
-  border: "1px solid #1B2125",
-}));
 
 interface ProductProps {
   prodtitle: string;
