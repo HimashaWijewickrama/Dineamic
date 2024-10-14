@@ -1,28 +1,30 @@
-import MailIcon from "@mui/icons-material/Mail";
-import InboxIcon from "@mui/icons-material/MoveToInbox";
+import { Delete } from "@mui/icons-material";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import { Button, Stack, Typography } from "@mui/material";
+import Backdrop from "@mui/material/Backdrop";
 import Badge from "@mui/material/Badge";
 import Box from "@mui/material/Box";
+import CircularProgress from "@mui/material/CircularProgress";
 import Divider from "@mui/material/Divider";
 import IconButton from "@mui/material/IconButton";
+import ImageListItem from "@mui/material/ImageListItem";
 import List from "@mui/material/List";
-import ListItem from "@mui/material/ListItem";
-import ListItemButton from "@mui/material/ListItemButton";
-import ListItemIcon from "@mui/material/ListItemIcon";
-import ListItemText from "@mui/material/ListItemText";
 import SwipeableDrawer from "@mui/material/SwipeableDrawer";
 import * as React from "react";
-import Avatar from "@mui/material/Avatar";
-import { sampleProductsData } from "../data/sampleProductsData";
-import ImageList from "@mui/material/ImageList";
-import ImageListItem from "@mui/material/ImageListItem";
-import { Button, Stack, Typography } from "@mui/material";
 import CartItemController from "../Components/CartItemController";
-import { Delete, Padding } from "@mui/icons-material";
+import { sampleProductsData } from "../data/sampleProductsData";
 
 type Anchor = "right";
 
 export default function ShoppingCart() {
+  const [open, setOpen] = React.useState(false);
+  const handleClose = () => {
+    setOpen(false);
+  };
+  const handleOpen = () => {
+    setOpen(true);
+  };
+
   const [state, setState] = React.useState({
     right: false,
   });
@@ -75,7 +77,7 @@ export default function ShoppingCart() {
               color="primary"
               aria-label="add to shopping cart"
               size="small"
-              style={{marginBottom: "10px"}}
+              style={{ marginBottom: "10px" }}
             >
               <Delete fontSize="small" /> Remove Item
             </Button>
@@ -119,6 +121,33 @@ export default function ShoppingCart() {
             </Stack>
           </ImageListItem>
         ))}
+        <Divider />
+
+        <Stack spacing={2} sx={{ my: 1, mx: "auto", p: 2 }}>
+          <Typography
+            variant="body2"
+            sx={{ color: "text.secondary" }}
+            style={{
+              textTransform: "uppercase",
+              textAlign: "left",
+              fontSize: "20px",
+              fontWeight: 600,
+            }}
+          >
+            Subtotal (Including taxes) <br />
+            $110.50 AUD
+          </Typography>
+          <Button variant="contained" onClick={handleOpen}>
+            Check Out
+          </Button>
+          <Backdrop
+            sx={(theme) => ({ color: "#fff", zIndex: theme.zIndex.drawer + 1 })}
+            open={open}
+            onClick={handleClose}
+          >
+            <CircularProgress color="inherit" />
+          </Backdrop>
+        </Stack>
       </List>
     </Box>
   );
