@@ -1,22 +1,20 @@
-import { AddShoppingCart, RemoveShoppingCart } from "@mui/icons-material";
 import FavoriteIcon from "@mui/icons-material/Favorite";
-import { Button, ButtonGroup, Stack } from "@mui/material";
-import Box from "@mui/material/Box";
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import CardHeader from "@mui/material/CardHeader";
 import CardMedia from "@mui/material/CardMedia";
+import ClickAwayListener from "@mui/material/ClickAwayListener";
 import IconButton from "@mui/material/IconButton";
 import Paper from "@mui/material/Paper";
+import Tooltip from "@mui/material/Tooltip";
 import Typography from "@mui/material/Typography";
 import { styled } from "@mui/material/styles";
 import React, { useState } from "react";
+import CartItemController from "./CartItemController";
 import { ProductDetail } from "./ProductDetail";
 import { ProductPrice } from "./ProductPrice";
 import { RatingProduct } from "./RatingProduct";
-import Tooltip from "@mui/material/Tooltip";
-import ClickAwayListener from "@mui/material/ClickAwayListener";
 
 const Item = styled(Paper)(({ theme }) => ({
   ...theme.typography.body2,
@@ -35,23 +33,13 @@ export const SingleProduct: React.FC<ProductProps> = ({
   prodimageurl,
   prodimagealt,
 }) => {
-  const [itemCount, setItemCount] = useState(0);
   const [addFavourite, setAddFavourite] = useState(0);
   const [open, setOpen] = React.useState(false);
 
   const handleTooltipClose = () => {
     setOpen(false);
   };
-  const OnClickAddItem = () => {
-    setItemCount(itemCount + 1);
-  };
-  const OnClickRemoveItem = () => {
-    if (itemCount > 0) {
-      setItemCount(itemCount - 1);
-    } else {
-      setItemCount(itemCount);
-    }
-  };
+
   const OnClickAddFavourite = () => {
     setAddFavourite(addFavourite + 1);
     setOpen(true);
@@ -131,47 +119,7 @@ export const SingleProduct: React.FC<ProductProps> = ({
         </Typography>
       </CardContent>
       <CardActions>
-        <Box sx={{ width: "100%" }}>
-          {[0].map((elevation) => (
-            <Stack direction="row" spacing={2}>
-              <Item key={elevation} elevation={elevation}>
-                <ButtonGroup
-                  disableElevation
-                  variant="contained"
-                  aria-label="Disabled button group"
-                  sx={{ width: "100%" }}
-                >
-                  {" "}
-                  <Button
-                    variant="outlined"
-                    color="secondary"
-                    sx={{ width: "30%" }}
-                    onClick={OnClickAddItem}
-                  >
-                    <AddShoppingCart /> Add
-                  </Button>
-                  <Button
-                    variant="outlined"
-                    color="secondary"
-                    sx={{ width: "40%" }}
-                    disabled
-                    style={{ color: "#000000", fontWeight: 600 }}
-                  >
-                    {itemCount}
-                  </Button>
-                  <Button
-                    variant="outlined"
-                    color="secondary"
-                    sx={{ width: "30%" }}
-                    onClick={OnClickRemoveItem}
-                  >
-                    <RemoveShoppingCart /> Remove
-                  </Button>
-                </ButtonGroup>
-              </Item>
-            </Stack>
-          ))}
-        </Box>
+        <CartItemController />
       </CardActions>
     </Card>
   );
