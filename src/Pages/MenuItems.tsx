@@ -1,8 +1,8 @@
 import Badge from "@mui/material/Badge";
-import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid2";
 import Paper from "@mui/material/Paper";
 import { experimentalStyled as styled } from "@mui/material/styles";
+import ProductPagination from "../Components/ProductPagination";
 import { SingleProduct } from "../Components/SingleProduct";
 
 const Item = styled(Paper)(({ theme }) => ({
@@ -18,7 +18,8 @@ const Item = styled(Paper)(({ theme }) => ({
 
 export default function MenuItems() {
   return (
-    <Box sx={{ flexGrow: 1 }}>
+    <>
+    {/* // <Box sx={{ flexGrow: 1 }}> */}
       <Grid
         container
         spacing={{ xs: 2, md: 3 }}
@@ -40,6 +41,8 @@ export default function MenuItems() {
           </Grid>
         ))}
       </Grid>
-    </Box>
+      <ProductPagination/>
+    {/* // </Box> */}
+    </>
   );
 }

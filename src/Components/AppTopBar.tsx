@@ -1,18 +1,18 @@
+import * as React from "react";
+import { useNavigate } from "react-router-dom";
+import ShoppingCart from "../Pages/ShoppingCart";
 import { Home } from "@mui/icons-material";
 import MoreIcon from "@mui/icons-material/MoreVert";
 import SearchIcon from "@mui/icons-material/Search";
-import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import AppBar from "@mui/material/AppBar";
-import Badge from "@mui/material/Badge";
 import Box from "@mui/material/Box";
 import IconButton from "@mui/material/IconButton";
 import InputBase from "@mui/material/InputBase";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
-import { alpha, styled } from "@mui/material/styles";
+import { styled } from "@mui/material/styles";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
-import * as React from "react";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -31,20 +31,19 @@ const Search = styled("div")(({ theme }) => ({
 }));
 
 const SearchIconWrapper = styled("div")(() => ({
-  padding: "12px",
   height: "100%",
   position: "absolute",
   pointerEvents: "none",
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
+  paddingLeft: "15px",
 }));
 
 const StyledInputBase = styled(InputBase)(({ theme }) => ({
   color: "inherit",
   "& .MuiInputBase-input": {
     padding: theme.spacing(1, 1, 1, 0),
-    // vertical padding + font size from searchIcon
     paddingLeft: `calc(1em + ${theme.spacing(4)})`,
     transition: theme.transitions.create("width"),
     width: "100%",
@@ -55,31 +54,19 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 export default function AppTopBar() {
-  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] =
     React.useState<null | HTMLElement>(null);
 
-  const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
-
-  const handleProfileMenuOpen = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorEl(event.currentTarget);
-  };
 
   const handleMobileMenuClose = () => {
     setMobileMoreAnchorEl(null);
-  };
-
-  const handleMenuClose = () => {
-    setAnchorEl(null);
-    handleMobileMenuClose();
   };
 
   const handleMobileMenuOpen = (event: React.MouseEvent<HTMLElement>) => {
     setMobileMoreAnchorEl(event.currentTarget);
   };
 
-  const menuId = "search-account-menu";
   const mobileMenuId = "search-account-menu-mobile";
 
   const renderMobileMenu = (
@@ -105,19 +92,13 @@ export default function AppTopBar() {
         <p>Home</p>
       </MenuItem>
       <MenuItem>
-        <IconButton
-          size="large"
-          aria-label="show 17 new notifications"
-          color="inherit"
-        >
-          <Badge badgeContent={17} color="error">
-            <ShoppingCartIcon />
-          </Badge>
-        </IconButton>
+        <ShoppingCart />
         <p>Cart</p>
       </MenuItem>
     </Menu>
   );
+
+  const navigate = useNavigate();
 
   return (
     <Box sx={{ flexGrow: 1 }} style={{ backgroundColor: "#000000" }}>
@@ -142,18 +123,15 @@ export default function AppTopBar() {
           </Search>
           <Box sx={{ flexGrow: 1 }} />
           <Box sx={{ display: { xs: "none", md: "flex" } }}>
-            <IconButton size="large" aria-label="home" color="inherit">
-              <Home />
-            </IconButton>
             <IconButton
               size="large"
-              aria-label="show 17 new notifications"
+              aria-label="home"
               color="inherit"
+              onClick={() => navigate("/home")}
             >
-              <Badge badgeContent={17} color="error">
-                <ShoppingCartIcon />
-              </Badge>
+              <Home />
             </IconButton>
+            <ShoppingCart />
           </Box>
           <Box sx={{ display: { xs: "flex", md: "none" } }}>
             <IconButton
