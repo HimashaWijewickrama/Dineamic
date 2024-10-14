@@ -16,9 +16,9 @@ import Avatar from "@mui/material/Avatar";
 import { sampleProductsData } from "../data/sampleProductsData";
 import ImageList from "@mui/material/ImageList";
 import ImageListItem from "@mui/material/ImageListItem";
-import { Stack, Typography } from "@mui/material";
+import { Button, Stack, Typography } from "@mui/material";
 import CartItemController from "../Components/CartItemController";
-import { Padding } from "@mui/icons-material";
+import { Delete, Padding } from "@mui/icons-material";
 
 type Anchor = "right";
 
@@ -70,6 +70,15 @@ export default function ShoppingCart() {
             key={sampleProducts.imageURL}
             sx={{ my: 1, mx: "auto", p: 2 }}
           >
+            <Button
+              variant="outlined"
+              color="primary"
+              aria-label="add to shopping cart"
+              size="small"
+              style={{marginBottom: "10px"}}
+            >
+              <Delete fontSize="small" /> Remove Item
+            </Button>
             <Stack spacing={2} direction="row" sx={{ alignItems: "center" }}>
               <img
                 src={sampleProducts.imageURL}
@@ -97,7 +106,6 @@ export default function ShoppingCart() {
                 >
                   {sampleProducts.name}
                 </Typography>
-                <br />
                 <Typography
                   variant="body2"
                   sx={{ color: "text.secondary" }}

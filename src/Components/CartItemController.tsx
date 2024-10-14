@@ -38,7 +38,7 @@ export default function CartItemController() {
               {" "}
               <Button
                 variant="outlined"
-                color="secondary"
+                color="primary"
                 sx={{ width: "30%" }}
                 onClick={OnClickAddItem}
               >
@@ -46,7 +46,7 @@ export default function CartItemController() {
               </Button>
               <Button
                 variant="outlined"
-                color="secondary"
+                color="primary"
                 sx={{ width: "40%" }}
                 disabled
                 style={{ color: "#000000", fontWeight: 600, fontSize: "20px" }}
@@ -55,7 +55,7 @@ export default function CartItemController() {
               </Button>
               <Button
                 variant="outlined"
-                color="secondary"
+                color="primary"
                 sx={{ width: "30%" }}
                 onClick={OnClickRemoveItem}
               >
