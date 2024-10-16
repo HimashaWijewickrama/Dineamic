@@ -3,7 +3,6 @@ import { Button, ButtonGroup, Stack } from "@mui/material";
 import Box from "@mui/material/Box";
 import Paper from "@mui/material/Paper";
 import { styled } from "@mui/material/styles";
-import { useState } from "react";
 
 const Item = styled(Paper)(({ theme }) => ({
   ...theme.typography.body2,
@@ -11,60 +10,61 @@ const Item = styled(Paper)(({ theme }) => ({
   border: "1px solid #1B2125",
 }));
 
-export default function CartItemController() {
-  const [itemCount, setItemCount] = useState(0);
+interface CartItemControllerProps {
+  itemCount: number;
+  setItemCount: (count: number | ((prevCount: number) => number)) => void;
+}
 
+export default function CartItemController({
+  itemCount,
+  setItemCount,
+}: CartItemControllerProps) {
   const OnClickAddItem = () => {
-    setItemCount(itemCount + 1);
+    setItemCount((prevCount) => prevCount + 1); // Use functional update
   };
+
   const OnClickRemoveItem = () => {
-    if (itemCount > 0) {
-      setItemCount(itemCount - 1);
-    } else {
-      setItemCount(itemCount);
-    }
+    setItemCount((prevCount) => (prevCount > 0 ? prevCount - 1 : 0)); // Use functional update
   };
+
   return (
     <Box sx={{ width: "100%" }}>
-      {[0].map((elevation) => (
-        <Stack direction="row" spacing={2}>
-          <Item key={elevation} elevation={elevation}>
-            <ButtonGroup
-              disableElevation
-              variant="contained"
-              aria-label="Disabled button group"
-              sx={{ width: "100%" }}
+      <Stack direction="row" spacing={2}>
+        <Item>
+          <ButtonGroup
+            disableElevation
+            variant="contained"
+            aria-label="Disabled button group"
+            sx={{ width: "100%" }}
+          >
+            <Button
+              variant="outlined"
+              color="primary"
+              sx={{ width: "30%" }}
+              onClick={OnClickAddItem}
             >
-              {" "}
-              <Button
-                variant="outlined"
-                color="primary"
-                sx={{ width: "30%" }}
-                onClick={OnClickAddItem}
-              >
-                <AddShoppingCart sx={{ fontSize: 30 }} />
-              </Button>
-              <Button
-                variant="outlined"
-                color="primary"
-                sx={{ width: "40%" }}
-                disabled
-                style={{ color: "#000000", fontWeight: 600, fontSize: "20px" }}
-              >
-                {itemCount}
-              </Button>
-              <Button
-                variant="outlined"
-                color="primary"
-                sx={{ width: "30%" }}
-                onClick={OnClickRemoveItem}
-              >
-                <RemoveShoppingCart sx={{ fontSize: 30 }} />
-              </Button>
-            </ButtonGroup>
-          </Item>
-        </Stack>
-      ))}
+              <AddShoppingCart sx={{ fontSize: 30 }} />
+            </Button>
+            <Button
+              variant="outlined"
+              color="primary"
+              sx={{ width: "40%" }}
+              disabled
+              style={{ color: "#000000", fontWeight: 600, fontSize: "20px" }}
+            >
+              {itemCount}
+            </Button>
+            <Button
+              variant="outlined"
+              color="primary"
+              sx={{ width: "30%" }}
+              onClick={OnClickRemoveItem}
+            >
+              <RemoveShoppingCart sx={{ fontSize: 30 }} />
+            </Button>
+          </ButtonGroup>
+        </Item>
+      </Stack>
     </Box>
   );
 }

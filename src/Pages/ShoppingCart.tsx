@@ -18,6 +18,7 @@ type Anchor = "right";
 
 export default function ShoppingCart() {
   const [open, setOpen] = React.useState(false);
+
   const handleClose = () => {
     setOpen(false);
   };
@@ -28,6 +29,7 @@ export default function ShoppingCart() {
   const [state, setState] = React.useState({
     right: false,
   });
+
   const toggleDrawer =
     (anchor: Anchor, open: boolean) =>
     (event: React.KeyboardEvent | React.MouseEvent) => {
@@ -42,17 +44,20 @@ export default function ShoppingCart() {
 
       setState({ ...state, [anchor]: open });
     };
+
+  // Initialize product counts as an array
+  const [itemCounts, setItemCounts] = React.useState(
+    sampleProductsData.map(() => 0)
+  );
+
   const list = (anchor: Anchor) => (
     <Box
       sx={{ width: 500 }}
       role="presentation"
-      // onClick={toggleDrawer(anchor, false)}
       onKeyDown={toggleDrawer(anchor, false)}
     >
       <List>
         <Stack spacing={2} direction="row" sx={{ my: 1, mx: "auto", p: 2 }}>
-          {/* {sampleProductsData.map(sampleProducts => ( */}
-          {/* <ImageList sx={{ width: 500, height: 450 }} cols={1} rowHeight={150} style={{marginBottom: "10px"}}> */}
           <Typography
             variant="body2"
             sx={{ color: "text.secondary" }}
@@ -62,12 +67,12 @@ export default function ShoppingCart() {
               fontSize: "28px",
             }}
           >
-            Your Cart (2 items)
+            Your Cart ({itemCounts.reduce((a, b) => a + b, 0)} items)
           </Typography>
         </Stack>
         <Divider />
 
-        {sampleProductsData.map((sampleProducts) => (
+        {sampleProductsData.map((sampleProducts, index) => (
           <ImageListItem
             key={sampleProducts.imageURL}
             sx={{ my: 1, mx: "auto", p: 2 }}
@@ -96,10 +101,7 @@ export default function ShoppingCart() {
               <Stack
                 direction="column"
                 spacing={0.5}
-                sx={{
-                  justifyContent: "flex-start",
-                  alignItems: "flex-start",
-                }}
+                sx={{ justifyContent: "flex-start", alignItems: "flex-start" }}
               >
                 <Typography
                   variant="body2"
@@ -113,16 +115,35 @@ export default function ShoppingCart() {
                   sx={{ color: "text.secondary" }}
                   style={{ textTransform: "uppercase" }}
                 >
-                  ${sampleProducts.price} AUD
+                  ${sampleProducts.price} AUD * {itemCounts[index]}
                 </Typography>
                 <br />
-                <CartItemController />
+                <Typography style={{ color: "red" }}>
+                  ${(sampleProducts.price * itemCounts[index]).toFixed(2)} AUD
+                </Typography>
+                <br />
+                <CartItemController
+                  itemCount={itemCounts[index]} // Pass specific item count
+                  setItemCount={(
+                    count: number | ((prevCount: number) => number)
+                  ) => {
+                    if (typeof count === "function") {
+                      const newCount = count(itemCounts[index]); // Call the function if count is a function
+                      const newCounts = [...itemCounts];
+                      newCounts[index] = newCount;
+                      setItemCounts(newCounts);
+                    } else {
+                      const newCounts = [...itemCounts];
+                      newCounts[index] = count;
+                      setItemCounts(newCounts);
+                    }
+                  }} // This now matches the expected type
+                />
               </Stack>
             </Stack>
           </ImageListItem>
         ))}
         <Divider />
-
         <Stack spacing={2} sx={{ my: 1, mx: "auto", p: 2 }}>
           <Typography
             variant="body2"
@@ -151,17 +172,17 @@ export default function ShoppingCart() {
       </List>
     </Box>
   );
+
   return (
     <>
       {(["right"] as const).map((anchor) => (
         <React.Fragment key={anchor}>
           <IconButton
             size="large"
-            aria-label="show 17 new notifications"
             color="inherit"
             onClick={toggleDrawer(anchor, true)}
           >
-            <Badge badgeContent={17} color="error">
+            <Badge color="error">
               <ShoppingCartIcon />
             </Badge>
           </IconButton>
