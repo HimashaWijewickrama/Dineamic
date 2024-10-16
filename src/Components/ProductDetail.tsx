@@ -1,15 +1,9 @@
-import * as React from "react";
-import { styled } from "@mui/material/styles";
 import { Link, Typography } from "@mui/material";
+import * as React from "react";
 
 interface ProductDetailProps {
   proddetailsubtitle: string;
 }
-
-const Div = styled("div")(({ theme }) => ({
-  ...theme.typography.button,
-  backgroundColor: theme.palette.background.paper,
-}));
 
 export const ProductDetail: React.FC<ProductDetailProps> = ({
   proddetailsubtitle,
