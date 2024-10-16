@@ -1,4 +1,7 @@
 import FavoriteIcon from "@mui/icons-material/Favorite";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import Box from "@mui/material/Box";
+import Button from "@mui/material/Button";
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
@@ -9,13 +12,11 @@ import IconButton from "@mui/material/IconButton";
 import Tooltip from "@mui/material/Tooltip";
 import Typography from "@mui/material/Typography";
 import React, { useState } from "react";
-import CartItemController from "./CartItemController";
 import { ProductDetail } from "./ProductDetail";
 import { ProductPrice } from "./ProductPrice";
 import { RatingProduct } from "./RatingProduct";
-
 interface ProductProps {
-  prodtitle: string;
+  prodtitle: any;
   prodimageurl: string;
   prodimagealt: string;
 }
@@ -104,7 +105,16 @@ export const SingleProduct: React.FC<ProductProps> = ({
         </Typography>
       </CardContent>
       <CardActions>
-        <CartItemController />
+        <Box sx={{ width: "100%" }}>
+          <Button
+            variant="contained"
+            sx={{ width: "100%" }}
+            color="success"
+            endIcon={<ShoppingCartIcon />}
+          >
+            Add To Cart
+          </Button>
+        </Box>
       </CardActions>
     </Card>
   );

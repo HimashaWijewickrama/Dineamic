@@ -4,6 +4,8 @@ import Paper from "@mui/material/Paper";
 import { experimentalStyled as styled } from "@mui/material/styles";
 import ProductPagination from "../Components/ProductPagination";
 import { SingleProduct } from "../Components/SingleProduct";
+import { sampleProductsData } from "../data/sampleProductsData";
+
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: "#fff",
