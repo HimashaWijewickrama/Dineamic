@@ -12,12 +12,12 @@ import List from "@mui/material/List";
 import SwipeableDrawer from "@mui/material/SwipeableDrawer";
 import * as React from "react";
 import CartItemController from "../Components/CartItemController";
+import { useCart } from "../Components/CartProvider";
 import { sampleProductsData } from "../data/sampleProductsData";
-
-type Anchor = "right";
 
 export default function ShoppingCart() {
   const [open, setOpen] = React.useState(false);
+  const { cartCount } = useCart();
 
   const handleClose = () => {
     setOpen(false);
@@ -31,7 +31,7 @@ export default function ShoppingCart() {
   });
 
   const toggleDrawer =
-    (anchor: Anchor, open: boolean) =>
+    (anchor: "right", open: boolean) =>
     (event: React.KeyboardEvent | React.MouseEvent) => {
       if (
         event &&
@@ -50,11 +50,11 @@ export default function ShoppingCart() {
     sampleProductsData.map(() => 0)
   );
 
-  const list = (anchor: Anchor) => (
+  const list = () => (
     <Box
       sx={{ width: 500 }}
       role="presentation"
-      onKeyDown={toggleDrawer(anchor, false)}
+      onKeyDown={toggleDrawer("right", false)}
     >
       <List>
         <Stack spacing={2} direction="row" sx={{ my: 1, mx: "auto", p: 2 }}>
@@ -175,24 +175,24 @@ export default function ShoppingCart() {
 
   return (
     <>
-      {(["right"] as const).map((anchor) => (
-        <React.Fragment key={anchor}>
+      {(["right"] as const).map(() => (
+        <React.Fragment key={"right"}>
           <IconButton
             size="large"
             color="inherit"
-            onClick={toggleDrawer(anchor, true)}
+            onClick={toggleDrawer("right", true)}
           >
-            <Badge color="error">
+            <Badge color="error" badgeContent={cartCount} showZero>
               <ShoppingCartIcon />
             </Badge>
           </IconButton>
           <SwipeableDrawer
-            anchor={anchor}
-            open={state[anchor]}
-            onClose={toggleDrawer(anchor, false)}
-            onOpen={toggleDrawer(anchor, true)}
+            anchor="right"
+            open={state["right"]}
+            onClose={toggleDrawer("right", false)}
+            onOpen={toggleDrawer("right", true)}
           >
-            {list(anchor)}
+            {list()}
           </SwipeableDrawer>
         </React.Fragment>
       ))}

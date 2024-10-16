@@ -12,9 +12,11 @@ import IconButton from "@mui/material/IconButton";
 import Tooltip from "@mui/material/Tooltip";
 import Typography from "@mui/material/Typography";
 import React, { useState } from "react";
+import { useCart } from "./CartProvider";
 import { ProductDetail } from "./ProductDetail";
 import { ProductPrice } from "./ProductPrice";
 import { RatingProduct } from "./RatingProduct";
+
 interface ProductProps {
   prodtitle: any;
   prodimageurl: string;
@@ -28,6 +30,7 @@ export const SingleProduct: React.FC<ProductProps> = ({
 }) => {
   const [addFavourite, setAddFavourite] = useState(0);
   const [open, setOpen] = React.useState(false);
+  const { setCartCount } = useCart();
 
   const handleTooltipClose = () => {
     setOpen(false);
@@ -37,34 +40,35 @@ export const SingleProduct: React.FC<ProductProps> = ({
     setAddFavourite(addFavourite + 1);
     setOpen(true);
   };
+
+  const handleAddToCart = () => {
+    setCartCount((prevCount) => prevCount + 1); // Increment cart count correctly
+  };
+
   return (
     <Card sx={{ maxWidth: 345 }} style={{ border: "1px solid #E8E8E8" }}>
       <CardHeader
         action={
-          <>
-            <ClickAwayListener onClickAway={handleTooltipClose}>
-              <Tooltip
-                title={addFavourite}
-                PopperProps={{
-                  disablePortal: true,
-                }}
-                onClose={handleTooltipClose}
-                open={open}
-                disableFocusListener
-                disableHoverListener
-                disableTouchListener
-                arrow
+          <ClickAwayListener onClickAway={handleTooltipClose}>
+            <Tooltip
+              title={addFavourite}
+              PopperProps={{ disablePortal: true }}
+              onClose={handleTooltipClose}
+              open={open}
+              disableFocusListener
+              disableHoverListener
+              disableTouchListener
+              arrow
+            >
+              <IconButton
+                aria-label="add to favorites"
+                color="secondary"
+                onClick={OnClickAddFavourite}
               >
-                <IconButton
-                  aria-label="add to favorites"
-                  color="secondary"
-                  onClick={OnClickAddFavourite}
-                >
-                  <FavoriteIcon />
-                </IconButton>
-              </Tooltip>
-            </ClickAwayListener>
-          </>
+                <FavoriteIcon />
+              </IconButton>
+            </Tooltip>
+          </ClickAwayListener>
         }
         title={
           <Typography
@@ -101,7 +105,7 @@ export const SingleProduct: React.FC<ProductProps> = ({
       />
       <CardContent>
         <Typography variant="body2" sx={{ color: "text.secondary" }}>
-          <ProductDetail proddetailsubtitle="mozzarella cheese, meat sauce, noodles, tomato sause " />
+          <ProductDetail proddetailsubtitle="mozzarella cheese, meat sauce, noodles, tomato sauce " />
         </Typography>
       </CardContent>
       <CardActions>
@@ -111,6 +115,7 @@ export const SingleProduct: React.FC<ProductProps> = ({
             sx={{ width: "100%" }}
             color="success"
             endIcon={<ShoppingCartIcon />}
+            onClick={handleAddToCart}
           >
             Add To Cart
           </Button>
