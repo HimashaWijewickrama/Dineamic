@@ -64,7 +64,6 @@ export const SingleProduct: React.FC<ProductProps> = ({
 
   const { setCartCount } = useCart();
 
-
   const handleCartTooltipClose = () => {
     setTooltipOpen(false);
   };
@@ -74,7 +73,6 @@ export const SingleProduct: React.FC<ProductProps> = ({
   const handleFavTooltipOpen = () => {
     setOpen(true);
   };
-
 
   const OnClickAddFavourite = () => {
     setAddFavourite(addFavourite + 1);
@@ -243,7 +241,7 @@ export const SingleProduct: React.FC<ProductProps> = ({
       </CardContent>
       <CardActions>
         <Box sx={{ width: "100%" }}>
-        <ClickAwayListener onClickAway={handleCartTooltipClose}>
+          <ClickAwayListener onClickAway={handleCartTooltipClose}>
             <div>
               <Tooltip
                 PopperProps={{
@@ -256,17 +254,17 @@ export const SingleProduct: React.FC<ProductProps> = ({
                 disableTouchListener
                 title="This item is already added!"
               >
-          <Button
-            variant="contained"
-            sx={{ width: "100%" }}
-            color="success"
-            endIcon={<ShoppingCartIcon />}
-            onClick={handleAddToCart}
-            disabled={disable}
-          >
-            Add To Cart
-          </Button>
-          </Tooltip>
+                <Button
+                  variant="contained"
+                  sx={{ width: "100%" }}
+                  color="success"
+                  endIcon={<ShoppingCartIcon />}
+                  onClick={handleAddToCart}
+                  disabled={disable}
+                >
+                  Add To Cart
+                </Button>
+              </Tooltip>
             </div>
           </ClickAwayListener>
         </Box>
