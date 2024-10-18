@@ -58,11 +58,23 @@ export const SingleProduct: React.FC<ProductProps> = ({
 }) => {
   const [addFavourite, setAddFavourite] = useState(0);
   const [open, setOpen] = React.useState(false);
+  const [tooltipOpen, setTooltipOpen] = React.useState(false);
+
+  const [disable, setDisable] = React.useState(false);
+
   const { setCartCount } = useCart();
 
-  const handleTooltipClose = () => {
+
+  const handleCartTooltipClose = () => {
+    setTooltipOpen(false);
+  };
+  const handleFavTooltipClose = () => {
     setOpen(false);
   };
+  const handleFavTooltipOpen = () => {
+    setOpen(true);
+  };
+
 
   const OnClickAddFavourite = () => {
     setAddFavourite(addFavourite + 1);
@@ -71,17 +83,19 @@ export const SingleProduct: React.FC<ProductProps> = ({
 
   const handleAddToCart = () => {
     setCartCount((prevCount) => prevCount + 1); // Increment cart count correctly
+    setDisable(true);
+    setTooltipOpen(true);
   };
 
   return (
     <Card sx={{ maxWidth: 345 }} style={{ border: "1px solid #E8E8E8" }}>
       <CardHeader
         action={
-          <ClickAwayListener onClickAway={handleTooltipClose}>
+          <ClickAwayListener onClickAway={handleFavTooltipClose}>
             <Tooltip
               title={addFavourite}
               PopperProps={{ disablePortal: true }}
-              onClose={handleTooltipClose}
+              onClose={handleFavTooltipClose}
               open={open}
               disableFocusListener
               disableHoverListener
@@ -229,15 +243,32 @@ export const SingleProduct: React.FC<ProductProps> = ({
       </CardContent>
       <CardActions>
         <Box sx={{ width: "100%" }}>
+        <ClickAwayListener onClickAway={handleCartTooltipClose}>
+            <div>
+              <Tooltip
+                PopperProps={{
+                  disablePortal: true,
+                }}
+                onClose={handleCartTooltipClose}
+                open={tooltipOpen}
+                disableFocusListener
+                disableHoverListener
+                disableTouchListener
+                title="This item is already added!"
+              >
           <Button
             variant="contained"
             sx={{ width: "100%" }}
             color="success"
             endIcon={<ShoppingCartIcon />}
             onClick={handleAddToCart}
+            disabled={disable}
           >
             Add To Cart
           </Button>
+          </Tooltip>
+            </div>
+          </ClickAwayListener>
         </Box>
       </CardActions>
     </Card>
