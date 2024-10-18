@@ -1,6 +1,11 @@
 export interface ISampleProducts {
-    id: string;
-    imageURL: any;
-    name: any;
-    price: any;
+  id: string;
+  imageURL: string;
+  name: string;
+  price: number;
+  ingredient: string;
+  quantity: string;
+  protein: string;
+  fat: string;
+  carb: string;
 }
