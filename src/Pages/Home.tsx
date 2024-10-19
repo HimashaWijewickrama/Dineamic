@@ -1,4 +1,3 @@
-import Paper from "@mui/material/Paper";
 import AppTopBar from "../Components/AppTopBar";
 import { CartProvider } from "../Components/CartProvider";
 import LandingPage from "./LandingPage";
@@ -10,9 +9,7 @@ export default function () {
       <LandingPage />
       <CartProvider>
         <AppTopBar />
-        <Paper sx={{ width: "100%" }}>
           <MenuItems />
-        </Paper>
       </CartProvider>
     </>
   );
