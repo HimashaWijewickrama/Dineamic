@@ -1,4 +1,4 @@
-import { Delete } from "@mui/icons-material";
+import { Delete, ProductionQuantityLimits } from "@mui/icons-material";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import { Button, Stack, Typography } from "@mui/material";
 import Backdrop from "@mui/material/Backdrop";
@@ -35,6 +35,13 @@ export default function ShoppingCart() {
   const [itemCounts, setItemCounts] = React.useState(
     sampleProductsData.map(() => 0)
   );
+
+  // Function to calculate the subtotal
+  const calculateSubtotal = () => {
+    return cartItems.reduce((total, product, index) => {
+      return total + product.price * itemCounts[index];
+    }, 0);
+  };
 
   const list = () => (
     <Box sx={{ width: 500 }} onKeyDown={() => toggleDrawer(false)}>
@@ -95,11 +102,11 @@ export default function ShoppingCart() {
                   sx={{ color: "text.secondary" }}
                   style={{ textTransform: "uppercase" }}
                 >
-                  ${product.price} AUD * {itemCounts[index]}
+                  {product.price} LKR * {itemCounts[index]}
                 </Typography>
                 <br />
                 <Typography style={{ color: "red" }}>
-                  ${(product.price * itemCounts[index]).toFixed(2)} AUD
+                  {(product.price * itemCounts[index]).toFixed(2)} LKR
                 </Typography>
                 <br />
                 <CartItemController
@@ -125,22 +132,42 @@ export default function ShoppingCart() {
         ))}
         <Divider />
         <Stack spacing={2} sx={{ my: 1, mx: "auto", p: 2 }}>
-          <Typography
-            variant="body2"
-            sx={{ color: "text.secondary" }}
-            style={{
-              textTransform: "uppercase",
-              textAlign: "left",
-              fontSize: "20px",
-              fontWeight: 600,
-            }}
-          >
-            Subtotal (Including taxes) <br />
-            $110.50 AUD
-          </Typography>
-          <Button variant="contained" onClick={handleOpen}>
-            Check Out
-          </Button>
+          {cartCount != 0 ? (
+            <>
+              <Typography
+                variant="body2"
+                sx={{ color: "text.secondary" }}
+                style={{
+                  textTransform: "uppercase",
+                  textAlign: "left",
+                  fontSize: "20px",
+                  fontWeight: 600,
+                }}
+              >
+                Subtotal (Including taxes) : <br />
+                {calculateSubtotal().toFixed(2)} LKR
+              </Typography>
+              <Button variant="contained" onClick={handleOpen}>
+                Check Out
+              </Button>
+            </>
+          ) : (
+            <Typography
+              variant="body2"
+              sx={{ color: "text.secondary" }}
+              style={{
+                textTransform: "uppercase",
+                textAlign: "center",
+                fontSize: "15px",
+              }}
+            >
+              Your cart is empty!
+              <ProductionQuantityLimits
+                style={{ fontSize: "18px", paddingLeft: "5px" }}
+              />
+            </Typography>
+          )}
+
           <Backdrop
             sx={(theme) => ({ color: "#fff", zIndex: theme.zIndex.drawer + 1 })}
             open={open}
