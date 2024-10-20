@@ -1,4 +1,4 @@
-import * as React from "react";
+import { Facebook, Instagram, WhatsApp } from "@mui/icons-material";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Container from "@mui/material/Container";
@@ -8,11 +8,7 @@ import Link from "@mui/material/Link";
 import Stack from "@mui/material/Stack";
 import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
-import FacebookIcon from "@mui/icons-material/GitHub";
-import LinkedInIcon from "@mui/icons-material/LinkedIn";
-import TwitterIcon from "@mui/icons-material/X";
 import Logo from "../assets/logo.png";
-import { Facebook, Instagram, WhatsApp } from "@mui/icons-material";
 
 function Copyright() {
   return (

@@ -132,7 +132,7 @@ export default function ShoppingCart() {
         ))}
         <Divider />
         <Stack spacing={2} sx={{ my: 1, mx: "auto", p: 2 }}>
-          {cartCount != 0 ? (
+          {cartCount !== 0 ? (
             <>
               <Typography
                 variant="body2"
