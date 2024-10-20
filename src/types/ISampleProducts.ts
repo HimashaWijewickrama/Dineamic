@@ -1,5 +1,5 @@
 export interface ISampleProducts {
-  id: string;
+  id: number;
   imageURL: string;
   name: string;
   price: number;

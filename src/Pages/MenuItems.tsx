@@ -5,7 +5,6 @@ import { experimentalStyled as styled } from "@mui/material/styles";
 import ProductPagination from "../Components/ProductPagination";
 import { SingleProduct } from "../Components/SingleProduct";
 import { sampleProductsData } from "../data/sampleProductsData";
-import { Divider } from "@mui/material";
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: "#fff",
@@ -16,15 +15,6 @@ const Item = styled(Paper)(({ theme }) => ({
   ...theme.applyStyles("dark", {
     backgroundColor: "#1A2027",
   }),
-}));
-
-const Root = styled('div')(({ theme }) => ({
-  width: '100%',
-  ...theme.typography.body2,
-  color: theme.palette.text.secondary,
-  '& > :not(style) ~ :not(style)': {
-    marginTop: theme.spacing(2),
-  },
 }));
 
 export default function MenuItems() {
@@ -42,6 +32,7 @@ export default function MenuItems() {
                 <Badge color="secondary" badgeContent={index + 1}>
                   <>
                     <SingleProduct
+                      prodid={product.id}
                       prodtitle={product.name}
                       prodimageurl={product.imageURL}
                       prodimagealt={product.name}
@@ -59,10 +50,7 @@ export default function MenuItems() {
           </Grid>
         ))}
       </Grid>
-      <Root>
       <ProductPagination />
-      <Divider><p>End of the products</p></Divider>
-      </Root>
     </>
   );
 }

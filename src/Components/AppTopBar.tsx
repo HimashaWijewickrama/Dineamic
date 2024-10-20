@@ -110,7 +110,7 @@ export default function AppTopBar() {
             component="div"
             sx={{ display: { xs: "none", sm: "block" } }}
           >
-            DELIVEROO
+            DINEAMIC . 
           </Typography>
           <Search>
             <SearchIconWrapper>

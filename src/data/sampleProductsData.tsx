@@ -2,7 +2,7 @@ import { ISampleProducts } from "../types/ISampleProducts";
 
 export const sampleProductsData: ISampleProducts[] = [
   {
-    id: "1",
+    id: 0,
     imageURL:
       "https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?q=80&w=1913&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     name: "Chicken Stew",
@@ -14,7 +14,7 @@ export const sampleProductsData: ISampleProducts[] = [
     carb: "79.8g",
   },
   {
-    id: "2",
+    id: 1,
     imageURL:
       "https://images.unsplash.com/photo-1639744091981-2f826321fae6?q=80&w=1780&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     name: "French Fries",
@@ -26,7 +26,7 @@ export const sampleProductsData: ISampleProducts[] = [
     carb: "89.8g",
   },
   {
-    id: "3",
+    id: 2,
     imageURL:
       "https://images.unsplash.com/photo-1548907368-35e5ea8cbc8a?q=80&w=1900&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     name: "Sushi",
@@ -38,7 +38,7 @@ export const sampleProductsData: ISampleProducts[] = [
     carb: "8.8g",
   },
   {
-    id: "4",
+    id: 3,
     imageURL:
       "https://images.unsplash.com/photo-1713667417761-408ec68c3af1?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     name: "veggie taco",
@@ -50,7 +50,7 @@ export const sampleProductsData: ISampleProducts[] = [
     carb: "2.8g",
   },
   {
-    id: "5",
+    id: 4,
     imageURL:
       "https://images.unsplash.com/photo-1620572860868-45824e869129?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     name: "egg omelette",
@@ -62,7 +62,7 @@ export const sampleProductsData: ISampleProducts[] = [
     carb: "0.8g",
   },
   {
-    id: "6",
+    id: 5,
     imageURL:
       "https://images.unsplash.com/photo-1550586554-a5a846e56593?q=80&w=1965&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     name: "crabs curry",
@@ -74,7 +74,7 @@ export const sampleProductsData: ISampleProducts[] = [
     carb: "60.8g",
   },
   {
-    id: "7",
+    id: 6,
     imageURL:
       "https://images.unsplash.com/photo-1546453570-d2fcacdafbb2?q=80&w=2052&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     name: "cheese lasagna",
@@ -86,7 +86,7 @@ export const sampleProductsData: ISampleProducts[] = [
     carb: "3.8g",
   },
   {
-    id: "8",
+    id: 7,
     imageURL:
       "https://images.unsplash.com/photo-1692742247393-19c23ea5c503?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     name: "sweet pancake",

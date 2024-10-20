@@ -17,7 +17,7 @@ import { sampleProductsData } from "../data/sampleProductsData";
 
 export default function ShoppingCart() {
   const [open, setOpen] = React.useState(false);
-  const { cartCount } = useCart();
+  const { cartItems, cartCount, removeFromCart } = useCart();
 
   const handleClose = () => {
     setOpen(false);
@@ -26,24 +26,10 @@ export default function ShoppingCart() {
     setOpen(true);
   };
 
-  const [state, setState] = React.useState({
-    right: false,
-  });
-
-  const toggleDrawer =
-    (anchor: "right", open: boolean) =>
-    (event: React.KeyboardEvent | React.MouseEvent) => {
-      if (
-        event &&
-        event.type === "keydown" &&
-        ((event as React.KeyboardEvent).key === "Tab" ||
-          (event as React.KeyboardEvent).key === "Shift")
-      ) {
-        return;
-      }
-
-      setState({ ...state, [anchor]: open });
-    };
+  const [drawerOpen, setDrawerOpen] = React.useState(false);
+  const toggleDrawer = (open: boolean) => {
+    setDrawerOpen(open);
+  };
 
   // Initialize product counts as an array
   const [itemCounts, setItemCounts] = React.useState(
@@ -51,11 +37,7 @@ export default function ShoppingCart() {
   );
 
   const list = () => (
-    <Box
-      sx={{ width: 500 }}
-      role="presentation"
-      onKeyDown={toggleDrawer("right", false)}
-    >
+    <Box sx={{ width: 500 }} onKeyDown={() => toggleDrawer(false)}>
       <List>
         <Stack spacing={2} direction="row" sx={{ my: 1, mx: "auto", p: 2 }}>
           <Typography
@@ -67,29 +49,27 @@ export default function ShoppingCart() {
               fontSize: "28px",
             }}
           >
-            Your Cart ({itemCounts.reduce((a, b) => a + b, 0)} items)
+            Your Cart ({cartCount} items)
           </Typography>
         </Stack>
         <Divider />
 
-        {sampleProductsData.map((sampleProducts, index) => (
-          <ImageListItem
-            key={sampleProducts.imageURL}
-            sx={{ my: 1, mx: "auto", p: 2 }}
-          >
+        {cartItems.map((product, index) => (
+          <ImageListItem key={product.id} sx={{ my: 1, mx: "auto", p: 2 }}>
             <Button
               variant="outlined"
               color="primary"
               aria-label="add to shopping cart"
               size="small"
               style={{ marginBottom: "10px" }}
+              onClick={() => removeFromCart(product.id)}
             >
               <Delete fontSize="small" /> Remove Item
             </Button>
             <Stack spacing={2} direction="row" sx={{ alignItems: "center" }}>
               <img
-                src={sampleProducts.imageURL}
-                alt={sampleProducts.name}
+                src={product.imageURL}
+                alt={product.name}
                 loading="lazy"
                 style={{
                   width: "180px",
@@ -108,18 +88,18 @@ export default function ShoppingCart() {
                   sx={{ color: "text.secondary" }}
                   style={{ textTransform: "uppercase" }}
                 >
-                  {sampleProducts.name}
+                  {product.name}
                 </Typography>
                 <Typography
                   variant="body2"
                   sx={{ color: "text.secondary" }}
                   style={{ textTransform: "uppercase" }}
                 >
-                  ${sampleProducts.price} AUD * {itemCounts[index]}
+                  ${product.price} AUD * {itemCounts[index]}
                 </Typography>
                 <br />
                 <Typography style={{ color: "red" }}>
-                  ${(sampleProducts.price * itemCounts[index]).toFixed(2)} AUD
+                  ${(product.price * itemCounts[index]).toFixed(2)} AUD
                 </Typography>
                 <br />
                 <CartItemController
@@ -137,7 +117,7 @@ export default function ShoppingCart() {
                       newCounts[index] = count;
                       setItemCounts(newCounts);
                     }
-                  }} // This now matches the expected type
+                  }}
                 />
               </Stack>
             </Stack>
@@ -180,7 +160,7 @@ export default function ShoppingCart() {
           <IconButton
             size="large"
             color="inherit"
-            onClick={toggleDrawer("right", true)}
+            onClick={() => toggleDrawer(true)}
           >
             <Badge color="error" badgeContent={cartCount} showZero>
               <ShoppingCartIcon />
@@ -188,9 +168,9 @@ export default function ShoppingCart() {
           </IconButton>
           <SwipeableDrawer
             anchor="right"
-            open={state["right"]}
-            onClose={toggleDrawer("right", false)}
-            onOpen={toggleDrawer("right", true)}
+            open={drawerOpen}
+            onClose={() => toggleDrawer(false)}
+            onOpen={() => toggleDrawer(true)}
           >
             {list()}
           </SwipeableDrawer>

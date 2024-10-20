@@ -19,6 +19,7 @@ import React, { useState } from "react";
 import { useCart } from "./CartProvider";
 import { RatingProduct } from "./RatingProduct";
 interface ProductProps {
+  prodid: number;
   prodtitle: string;
   prodimageurl: string;
   prodimagealt: string;
@@ -46,6 +47,7 @@ const Div = styled("div")(({ theme }) => ({
   paddingTop: theme.spacing(2),
 }));
 export const SingleProduct: React.FC<ProductProps> = ({
+  prodid,
   prodtitle,
   prodimageurl,
   prodimagealt,
@@ -59,19 +61,15 @@ export const SingleProduct: React.FC<ProductProps> = ({
   const [addFavourite, setAddFavourite] = useState(0);
   const [open, setOpen] = React.useState(false);
   const [tooltipOpen, setTooltipOpen] = React.useState(false);
-
   const [disable, setDisable] = React.useState(false);
 
-  const { setCartCount } = useCart();
+  const { addToCart } = useCart(); // Use addToCart instead of setCartCount
 
   const handleCartTooltipClose = () => {
     setTooltipOpen(false);
   };
   const handleFavTooltipClose = () => {
     setOpen(false);
-  };
-  const handleFavTooltipOpen = () => {
-    setOpen(true);
   };
 
   const OnClickAddFavourite = () => {
@@ -80,8 +78,14 @@ export const SingleProduct: React.FC<ProductProps> = ({
   };
 
   const handleAddToCart = () => {
-    setCartCount((prevCount) => prevCount + 1); // Increment cart count correctly
-    setDisable(true);
+    addToCart({
+      id: prodid, // Use an appropriate id, assuming prodtitle is unique
+      name: prodtitle,
+      price: prodprice,
+      quantity: 1, // Default quantity added to cart
+      imageURL: prodimageurl,
+    });
+    setDisable(true); // Disable button after adding
     setTooltipOpen(true);
   };
 
