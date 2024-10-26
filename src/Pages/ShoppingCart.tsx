@@ -14,16 +14,20 @@ import * as React from "react";
 import CartItemController from "../Components/CartItemController";
 import { useCart } from "../Components/CartProvider";
 import { sampleProductsData } from "../data/sampleProductsData";
+import { useNavigate } from 'react-router-dom';
 
 export default function ShoppingCart() {
   const [open, setOpen] = React.useState(false);
   const { cartItems, cartCount, removeFromCart } = useCart();
 
+  const navigate = useNavigate();
+
   const handleClose = () => {
     setOpen(false);
   };
   const handleOpen = () => {
-    setOpen(true);
+    // setOpen(true);
+    navigate('/checkout');
   };
 
   const [drawerOpen, setDrawerOpen] = React.useState(false);

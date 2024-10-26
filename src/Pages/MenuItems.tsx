@@ -5,6 +5,7 @@ import { experimentalStyled as styled } from "@mui/material/styles";
 import ProductPagination from "../Components/ProductPagination";
 import { SingleProduct } from "../Components/SingleProduct";
 import { sampleProductsData } from "../data/sampleProductsData";
+import React, { useState } from "react";
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: "#fff",
@@ -18,6 +19,22 @@ const Item = styled(Paper)(({ theme }) => ({
 }));
 
 export default function MenuItems() {
+  const [currentPage, setCurrentPage] = useState(1);
+  const productsPerPage = 8;
+
+  const indexOfLastProduct = currentPage * productsPerPage;
+  const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
+  const currentProducts = sampleProductsData.slice(
+    indexOfFirstProduct,
+    indexOfLastProduct
+  );
+
+  const handlePageChange = (
+    event: React.ChangeEvent<unknown>,
+    value: number
+  ) => {
+    setCurrentPage(value);
+  };
   return (
     <>
       <Grid
@@ -25,7 +42,7 @@ export default function MenuItems() {
         spacing={{ xs: 2, md: 3 }}
         columns={{ xs: 4, sm: 8, md: 12 }}
       >
-        {sampleProductsData.map((product, index) => (
+        {currentProducts.map((product, index) => (
           <Grid key={product.id} size={{ xs: 6, sm: 4, md: 3 }}>
             {[0].map((elevation) => (
               <Item key={elevation} elevation={elevation}>
@@ -50,7 +67,12 @@ export default function MenuItems() {
           </Grid>
         ))}
       </Grid>
-      <ProductPagination />
+      <ProductPagination
+        count={Math.ceil(sampleProductsData.length / productsPerPage)}
+        page={currentPage}
+        onChange={handlePageChange}
+      />
+
     </>
   );
 }
