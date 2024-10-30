@@ -6,6 +6,7 @@ import ProductPagination from "../Components/ProductPagination";
 import { SingleProduct } from "../Components/SingleProduct";
 import { sampleProductsData } from "../data/sampleProductsData";
 import React, { useState } from "react";
+import CustomBreadcrumb from "../Components/CustomBreadcrumb";
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: "#fff",
@@ -72,7 +73,6 @@ export default function MenuItems() {
         page={currentPage}
         onChange={handlePageChange}
       />
-
     </>
   );
 }

@@ -11,6 +11,7 @@ import CardMedia from "@mui/material/CardMedia";
 import ClickAwayListener from "@mui/material/ClickAwayListener";
 import Divider from "@mui/material/Divider";
 import IconButton from "@mui/material/IconButton";
+import ButtonBase from "@mui/material/ButtonBase";
 import Paper from "@mui/material/Paper";
 import Stack from "@mui/material/Stack";
 import { styled } from "@mui/material/styles";
@@ -18,6 +19,7 @@ import Tooltip from "@mui/material/Tooltip";
 import React, { useState } from "react";
 import { useCart } from "./CartProvider";
 import { RatingProduct } from "./RatingProduct";
+import { useNavigate } from "react-router-dom";
 interface ProductProps {
   prodid: number;
   prodtitle: string;
@@ -45,6 +47,69 @@ const Div = styled("div")(({ theme }) => ({
   backgroundColor: theme.palette.background.paper,
   paddingLeft: theme.spacing(3),
   paddingTop: theme.spacing(2),
+}));
+const ImageButton = styled(ButtonBase)(({ theme }) => ({
+  position: "relative",
+  height: 350,
+  [theme.breakpoints.down("sm")]: {
+    width: "100% !important",
+    height: 50,
+  },
+  "&:hover, &.Mui-focusVisible": {
+    zIndex: 1,
+    "& .MuiImageBackdrop-root": {
+      opacity: 0.15,
+    },
+    "& .MuiImageMarked-root": {
+      opacity: 0,
+    },
+    "& .MuiTypography-root": {
+      border: "4px solid currentColor",
+    },
+  },
+}));
+
+const ImageSrc = styled("span")({
+  position: "absolute",
+  left: 0,
+  right: 0,
+  top: 0,
+  bottom: 0,
+  backgroundSize: "cover",
+  backgroundPosition: "center 40%",
+});
+
+const Image = styled("span")(({ theme }) => ({
+  position: "absolute",
+  left: 0,
+  right: 0,
+  top: 0,
+  bottom: 0,
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  color: theme.palette.common.white,
+}));
+
+const ImageBackdrop = styled("span")(({ theme }) => ({
+  position: "absolute",
+  left: 0,
+  right: 0,
+  top: 0,
+  bottom: 0,
+  backgroundColor: theme.palette.common.black,
+  opacity: 0.4,
+  transition: theme.transitions.create("opacity"),
+}));
+
+const ImageMarked = styled("span")(({ theme }) => ({
+  height: 1,
+  width: 18,
+  backgroundColor: theme.palette.common.white,
+  position: "absolute",
+  bottom: -2,
+  left: "calc(50% - 9px)",
+  transition: theme.transitions.create("opacity"),
 }));
 export const SingleProduct: React.FC<ProductProps> = ({
   prodid,
@@ -88,6 +153,13 @@ export const SingleProduct: React.FC<ProductProps> = ({
     setDisable(true); // Disable button after adding
     setTooltipOpen(true);
   };
+
+  const navigate = useNavigate();
+
+  const handleNavigateToDetail = () => {
+    navigate(`/product/${prodid}`);
+  };
+
 
   return (
     <Card sx={{ maxWidth: 345 }} style={{ border: "1px solid #E8E8E8" }}>
@@ -133,12 +205,39 @@ export const SingleProduct: React.FC<ProductProps> = ({
           </Typography>
         }
       />
-      <CardMedia
+      {/* <CardMedia
         component="img"
         height="250"
         image={prodimageurl}
         alt={prodimagealt}
-      />
+      /> */}
+      <ImageButton
+        focusRipple
+        style={{
+          width: "100%",
+          height: "250",
+        }}
+      >
+        <ImageSrc style={{ backgroundImage: `url(${prodimageurl})` }} />
+        <ImageBackdrop className="MuiImageBackdrop-root" />
+        <Image>
+          <Typography
+            component="span"
+            variant="subtitle1"
+            color="inherit"
+            sx={(theme) => ({
+              position: "relative",
+              p: 4,
+              pt: 2,
+              pb: `calc(${theme.spacing(1)} + 6px)`,
+            })}
+            onClick={handleNavigateToDetail}
+          >
+            View
+            <ImageMarked className="MuiImageMarked-root" />
+          </Typography>
+        </Image>
+      </ImageButton>
       <RatingProduct ratingvalue={3} />
       <Div>
         <Stack
