@@ -9,7 +9,7 @@ import ListItemText from "@mui/material/ListItemText";
 
 export default function BenefitList() {
   return (
-    <List sx={{ width: "100%", bgcolor: "background.paper" }}>
+    <List sx={{ width: "100%" }}>
       <ListItem>
         <ListItemAvatar>
           <Avatar>

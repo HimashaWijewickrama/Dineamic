@@ -14,6 +14,9 @@ import { useNavigate, useParams } from "react-router-dom";
 
 import BenefitList from "./BenefitList";
 import { useProductContext } from "./ProductProvider";
+import { SubTitleText } from "./SubTitleText";
+import { TitleText } from "./TitleText";
+import { ContentText } from "./ContentText";
 
 const productImage = {
   width: "80%",
@@ -88,14 +91,14 @@ const ProductDetail: React.FC = () => {
           </Box>
         </Grid>
         <Grid item xs={12} sm={6}>
-          <Typography
+          {/* <Typography
             variant="overline"
             gutterBottom
             sx={{ display: "block" }}
             style={{ fontSize: "28px", marginBottom: 0 }}
-          >
-            {product.name}
-          </Typography>
+          > */}
+          <TitleText title={product.name} />
+          {/* </Typography> */}
           <Typography
             variant="caption"
             gutterBottom
@@ -126,36 +129,19 @@ const ProductDetail: React.FC = () => {
             <Chip label="Gluten-free" color="warning" />
             <Chip label="Dairy-free" color="warning" />
           </Stack>
+          <SubTitleText subTitle={"Ingredient"} />
+          <ContentText
+            contentText={
+              "Chat Potato (50%) (Potatoes, Olive Oil, Salt), Grass-Fed Beef (27%), Salsa (23%)"
+            }
+          />
+          <ContentText
+            contentText={
+              "May Contain: Gluten, Wheat, Fish, Crustacean, Egg, Mollusc, Milk, Peanut, Soy, Tree Nuts, Sulphites, Sesame."
+            }
+          /><br/>
+          <SubTitleText subTitle={"Product Claims"} />
 
-          <Typography
-            variant="caption"
-            sx={{ margin: "10px 0", display: "block" }}
-            style={{
-              fontWeight: 600,
-              fontSize: "20px",
-              textTransform: "uppercase",
-            }}
-          >
-            Ingredients
-          </Typography>
-          <Typography variant="body1" component="p" sx={{ margin: "10px 0" }}>
-            Chat Potato (50%) (Potatoes, Olive Oil, Salt), Grass-Fed Beef (27%),
-            Salsa (23%)...
-            <br />
-            May Contain: Gluten, Wheat, Fish, Crustacean, Egg, Mollusc, Milk,
-            Peanut, Soy, Tree Nuts, Sulphites, Sesame.
-          </Typography>
-          <Typography
-            variant="caption"
-            sx={{ display: "block" }}
-            style={{
-              fontWeight: 600,
-              fontSize: "20px",
-              textTransform: "uppercase",
-            }}
-          >
-            Product Claims
-          </Typography>
           <Typography variant="body1" component="p">
             <BenefitList />
           </Typography>
