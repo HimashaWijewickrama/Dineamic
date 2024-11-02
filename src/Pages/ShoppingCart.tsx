@@ -11,10 +11,10 @@ import ImageListItem from "@mui/material/ImageListItem";
 import List from "@mui/material/List";
 import SwipeableDrawer from "@mui/material/SwipeableDrawer";
 import * as React from "react";
+import { useNavigate } from "react-router-dom";
 import CartItemController from "../Components/CartItemController";
 import { useCart } from "../Components/CartProvider";
 import { sampleProductsData } from "../data/sampleProductsData";
-import { useNavigate } from 'react-router-dom';
 
 export default function ShoppingCart() {
   const [open, setOpen] = React.useState(false);
@@ -27,7 +27,7 @@ export default function ShoppingCart() {
   };
   const handleOpen = () => {
     // setOpen(true);
-    navigate('/checkout');
+    navigate("/checkout");
   };
 
   const [drawerOpen, setDrawerOpen] = React.useState(false);

@@ -8,4 +8,6 @@ export interface ISampleProducts {
   protein: string;
   fat: string;
   carb: string;
+  sampleURL1: string;
+  sampleURL2: string;
 }

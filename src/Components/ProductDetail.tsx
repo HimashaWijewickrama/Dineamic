@@ -1,3 +1,4 @@
+import React, { useState, useEffect } from "react";
 import {
   Avatar,
   Box,
@@ -9,32 +10,54 @@ import {
   Typography,
 } from "@mui/material";
 import Grid from "@mui/material/Grid";
-import * as React from "react";
-import BenefitList from "./BenefitList";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
-const smoothieImage = {
+import BenefitList from "./BenefitList";
+import { useProductContext } from "./ProductProvider";
+
+const productImage = {
   width: "80%",
   height: "500px",
   boxShadow: "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)",
 };
 
-const avatarImages = [
-  "https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?q=80&w=1913&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-  "https://images.unsplash.com/photo-1577194509876-4bb24787a641?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-  "https://images.unsplash.com/photo-1660808600062-defd9cc275d3?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-];
+const ProductDetail: React.FC = () => {
+  const navigate = useNavigate();
+  const { id } = useParams<{ id: string }>();
+  const { products } = useProductContext();
 
-const ProductDetail = () => {
-  const [selectedImage, setSelectedImage] = React.useState(
-    "https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?q=80&w=1913&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-  );
+  // Initialize state for selected image and avatar images
+  const [selectedImage, setSelectedImage] = useState("");
+  const [avatarImages, setAvatarImages] = useState<string[]>([]);
+
+  // Find the product based on the ID
+  const product = products.find((p) => p.id === Number(id));
+
+  // Handle the case where the product is not found
+  useEffect(() => {
+    if (product) {
+      const images = [
+        product.imageURL,
+        product.sampleURL1,
+        product.sampleURL2,
+      ].filter(Boolean); // Filter out any null URLs
+
+      setAvatarImages(images); // Update the avatarImages state
+
+      // Set the initial selected image to the first image
+      if (images.length > 0) {
+        setSelectedImage(images[0]);
+      }
+    }
+  }, [product]); // Dependency on product ensures this runs when the product changes
+
+  if (!product) {
+    return <Typography variant="h6">Product not found</Typography>;
+  }
 
   const handleAvatarClick = (image: string) => {
     setSelectedImage(image);
   };
-
-  const navigate = useNavigate();
 
   return (
     <>
@@ -43,11 +66,7 @@ const ProductDetail = () => {
           <Box
             sx={{ width: "100%", display: "flex", justifyContent: "center" }}
           >
-            <img
-              src={selectedImage}
-              style={smoothieImage}
-              alt="Ginger + Greens Smoothie"
-            />
+            <img src={selectedImage} style={productImage} alt={product.name} />
           </Box>
           <Box sx={{ display: "flex", justifyContent: "center", padding: 2 }}>
             {avatarImages.map((image, index) => (
@@ -75,14 +94,14 @@ const ProductDetail = () => {
             gutterBottom
             style={{ fontWeight: "600" }}
           >
-            CHICKEN STEW
+            {product.name}
           </Typography>
           <Typography
             variant="subtitle1"
             component="p"
             sx={{ margin: "10px 0" }}
           >
-            550 LKR | 350G
+            {product.price} LKR | {product.quantity}
           </Typography>
           <Rating name="read-only" value={4} readOnly />
           <Typography
@@ -102,9 +121,7 @@ const ProductDetail = () => {
           </Typography>
           <Typography variant="body1" component="p" sx={{ margin: "10px 0" }}>
             Chat Potato (50%) (Potatoes, Olive Oil, Salt), Grass-Fed Beef (27%),
-            Salsa (23%) (Red Capsicum, Red Onion, Lemon Juice [Preservative
-            (223)], Olive Oil, Parsley, Red Wine Vinegar, Crushed Garlic, Salt,
-            Crushed Chilli, Spices, Pepper), Paprika.
+            Salsa (23%)...
             <br />
             May Contain: Gluten, Wheat, Fish, Crustacean, Egg, Mollusc, Milk,
             Peanut, Soy, Tree Nuts, Sulphites, Sesame.
