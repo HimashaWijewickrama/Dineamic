@@ -1,9 +1,8 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Home from "./Pages/Home";
-import LandingPage from "./Pages/LandingPage";
 import Footer from "./Components/Footer";
-import Checkout from "./Pages/Checkout";
 import ProductDetail from "./Components/ProductDetail";
+import Checkout from "./Pages/Checkout";
+import Home from "./Pages/Home";
 export default function App() {
   return (
     <>
@@ -14,7 +13,7 @@ export default function App() {
           <Route path="/product/:id" element={<ProductDetail />}></Route>
         </Routes>
       </BrowserRouter>
-      <Footer/>
+      <Footer />
     </>
   );
 }

@@ -1,150 +1,132 @@
-import { useParams } from "react-router-dom";
-import * as React from "react";
-import { styled, useTheme } from "@mui/material/styles";
-import DashboardIcon from "@mui/icons-material/Dashboard";
-import { AppProvider, Navigation, Router } from "@toolpad/core/AppProvider";
 import {
-  PageContainer,
-  PageContainerToolbar,
-} from "@toolpad/core/PageContainer";
-import Grid from "@mui/material/Grid2";
-import Paper from "@mui/material/Paper";
-import Stack from "@mui/material/Stack";
-import Button from "@mui/material/Button";
-import PrintIcon from "@mui/icons-material/Print";
-import DownloadIcon from "@mui/icons-material/Download";
-import CustomBreadcrumb from "./CustomBreadcrumb";
-import ImageList from "@mui/material/ImageList";
-import ImageListItem from "@mui/material/ImageListItem";
-import { Badge, Chip, Typography } from "@mui/material";
+  Avatar,
+  Box,
+  Button,
+  Chip,
+  Divider,
+  Rating,
+  Stack,
+  Typography,
+} from "@mui/material";
+import Grid from "@mui/material/Grid";
+import * as React from "react";
+import BenefitList from "./BenefitList";
+import { useNavigate } from "react-router-dom";
 
-const itemData = [
-  {
-    img: "https://images.unsplash.com/photo-1551963831-b3b1ca40c98e",
-    title: "Breakfast",
-  },
-  {
-    img: "https://images.unsplash.com/photo-1551782450-a2132b4ba21d",
-    title: "Burger",
-  },
-  {
-    img: "https://images.unsplash.com/photo-1444418776041-9c7e33cc5a9c",
-    title: "Coffee",
-  },
-  {
-    img: "https://images.unsplash.com/photo-1533827432537-70133748f5c8",
-    title: "Hats",
-  },
-  {
-    img: "https://images.unsplash.com/photo-1558642452-9d2a7deb7f62",
-    title: "Honey",
-  },
-  {
-    img: "https://images.unsplash.com/photo-1516802273409-68526ee1bdd6",
-    title: "Basketball",
-  },
-  {
-    img: "https://images.unsplash.com/photo-1518756131217-31eb79b20e8f",
-    title: "Fern",
-  },
-  {
-    img: "https://images.unsplash.com/photo-1597645587822-e99fa5d45d25",
-    title: "Mushrooms",
-  },
+const smoothieImage = {
+  width: "80%",
+  height: "500px",
+  boxShadow: "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)",
+};
+
+const avatarImages = [
+  "https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?q=80&w=1913&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  "https://images.unsplash.com/photo-1577194509876-4bb24787a641?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  "https://images.unsplash.com/photo-1660808600062-defd9cc275d3?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
 ];
 
-const NAVIGATION: Navigation = [
-  {
-    segment: "orders",
-    title: "Orders",
-    icon: <DashboardIcon />,
-  },
-];
+const ProductDetail = () => {
+  const [selectedImage, setSelectedImage] = React.useState(
+    "https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?q=80&w=1913&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  );
 
-function useDemoRouter(initialPath: string): Router {
-  const [pathname, setPathname] = React.useState(initialPath);
+  const handleAvatarClick = (image: string) => {
+    setSelectedImage(image);
+  };
 
-  const router = React.useMemo(() => {
-    return {
-      pathname,
-      searchParams: new URLSearchParams(),
-      navigate: (path: string | URL) => setPathname(String(path)),
-    };
-  }, [pathname]);
-
-  return router;
-}
-
-const Skeleton = styled("div")<{ height: number }>(({ theme, height }) => ({
-  backgroundColor: theme.palette.action.hover,
-  borderRadius: theme.shape.borderRadius,
-  height,
-  content: '" "',
-}));
-
-export default function PageContainerBasic(props: any) {
-  const { window } = props;
-  const router = useDemoRouter("/orders");
-  const theme = useTheme();
-  // Remove this const when copying and pasting into your project.
-  const demoWindow = window ? window() : undefined;
+  const navigate = useNavigate();
 
   return (
-    <AppProvider
-      navigation={NAVIGATION}
-      router={router}
-      theme={theme}
-      window={demoWindow}
-      branding={{
-        title: "ACME Inc.",
-      }}
-    >
-      <Paper sx={{ p: 2, width: "100%" }}>
-        <CustomBreadcrumb />
-        <PageContainer
-        //   slots={{
-        // toolbar: PageToolbar,
-        //   }}
-        >
-          <Grid container spacing={1}>
-            <Grid size={12}>
-              <Stack direction="row" spacing={1}>
-                <Chip label="New" color="success" />
-                <Chip label="High Protein" color="warning" />
-                <Chip label="Low Glutein" color="secondary" />
-              </Stack>
-              <Stack direction="row" spacing={1}>
-                <Typography style={{ fontSize: "36px", fontWeight: "600" }}>
-                  Chicken Strew
-                </Typography>
-              </Stack>
-              <Typography>LKR 650 (350g)</Typography>
-            </Grid>
-            <Grid size={12}>
-            <Stack direction="row" spacing={1} >
-            <ImageList sx={{ width: 700, height: 550 }} cols={4}>
-                {itemData.map((item) => (
-                  <ImageListItem key={item.img}>
-                    <img
-                      srcSet={`${item.img}?w=164&h=164&fit=crop&auto=format&dpr=2 2x`}
-                      src={`${item.img}?w=164&h=164&fit=crop&auto=format`}
-                      alt={item.title}
-                      loading="lazy"
-                      style={{
-                        width: "300",
-                      }}
-                    />
-                  </ImageListItem>
-                ))}
-              </ImageList>
-            </Stack>
-            <Stack direction="row" spacing={1}>
-
-            </Stack>
-            </Grid>
-          </Grid>
-        </PageContainer>
-      </Paper>
-    </AppProvider>
+    <>
+      <Grid container spacing={2} sx={{ padding: 2 }}>
+        <Grid item xs={12} sm={6}>
+          <Box
+            sx={{ width: "100%", display: "flex", justifyContent: "center" }}
+          >
+            <img
+              src={selectedImage}
+              style={smoothieImage}
+              alt="Ginger + Greens Smoothie"
+            />
+          </Box>
+          <Box sx={{ display: "flex", justifyContent: "center", padding: 2 }}>
+            {avatarImages.map((image, index) => (
+              <Avatar
+                key={index}
+                src={image}
+                variant="rounded"
+                sx={{
+                  width: 100,
+                  height: 80,
+                  mr: 2,
+                  cursor: "pointer",
+                  boxShadow:
+                    "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)",
+                }}
+                onClick={() => handleAvatarClick(image)}
+              />
+            ))}
+          </Box>
+        </Grid>
+        <Grid item xs={12} sm={6}>
+          <Typography
+            variant="h3"
+            component="h2"
+            gutterBottom
+            style={{ fontWeight: "600" }}
+          >
+            CHICKEN STEW
+          </Typography>
+          <Typography
+            variant="subtitle1"
+            component="p"
+            sx={{ margin: "10px 0" }}
+          >
+            550 LKR | 350G
+          </Typography>
+          <Rating name="read-only" value={4} readOnly />
+          <Typography
+            variant="subtitle2"
+            component="p"
+            sx={{ margin: "10px 0" }}
+          >
+            29 reviews
+          </Typography>
+          <Stack direction="row" spacing={1} sx={{ margin: "10px 0" }}>
+            <Chip label="Vegan" color="warning" />
+            <Chip label="Gluten-free" color="warning" />
+            <Chip label="Dairy-free" color="warning" />
+          </Stack>
+          <Typography variant="h6" component="h3" gutterBottom>
+            Ingredients
+          </Typography>
+          <Typography variant="body1" component="p" sx={{ margin: "10px 0" }}>
+            Chat Potato (50%) (Potatoes, Olive Oil, Salt), Grass-Fed Beef (27%),
+            Salsa (23%) (Red Capsicum, Red Onion, Lemon Juice [Preservative
+            (223)], Olive Oil, Parsley, Red Wine Vinegar, Crushed Garlic, Salt,
+            Crushed Chilli, Spices, Pepper), Paprika.
+            <br />
+            May Contain: Gluten, Wheat, Fish, Crustacean, Egg, Mollusc, Milk,
+            Peanut, Soy, Tree Nuts, Sulphites, Sesame.
+          </Typography>
+          <Typography variant="h6" component="h3">
+            Product Claims
+          </Typography>
+          <Typography variant="body1" component="p">
+            <BenefitList />
+          </Typography>
+          <Divider sx={{ margin: "20px 0" }} />
+          <Button
+            variant="contained"
+            sx={{ margin: "20px 0", justifyContent: "center" }}
+            onClick={() => navigate("/home")}
+          >
+            Back to Home
+          </Button>
+        </Grid>
+      </Grid>
+    </>
   );
-}
+};
+
+export default ProductDetail;
