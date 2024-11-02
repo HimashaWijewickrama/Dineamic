@@ -89,20 +89,30 @@ const ProductDetail: React.FC = () => {
         </Grid>
         <Grid item xs={12} sm={6}>
           <Typography
-            variant="h3"
-            component="h2"
+            variant="overline"
             gutterBottom
-            style={{ fontWeight: "600" }}
+            sx={{ display: "block" }}
+            style={{ fontSize: "28px", marginBottom: 0 }}
           >
             {product.name}
           </Typography>
           <Typography
-            variant="subtitle1"
-            component="p"
-            sx={{ margin: "10px 0" }}
+            variant="caption"
+            gutterBottom
+            sx={{ margin: "10px 0", display: "block" }}
+            style={{ fontWeight: 600, fontSize: "20px" }}
           >
             {product.price} LKR | {product.quantity}
           </Typography>
+          <Typography
+            variant="overline"
+            style={{ fontSize: "10px", color: "red" }}
+            // sx={{ margin: "10px 0" }}
+          >
+            *Quantity Of Per Serving is {product.quantity}
+          </Typography>
+          <br />
+
           <Rating name="read-only" value={4} readOnly />
           <Typography
             variant="subtitle2"
@@ -111,12 +121,21 @@ const ProductDetail: React.FC = () => {
           >
             29 reviews
           </Typography>
-          <Stack direction="row" spacing={1} sx={{ margin: "10px 0" }}>
+          <Stack direction="row" spacing={1} sx={{ margin: "15px 0" }}>
             <Chip label="Vegan" color="warning" />
             <Chip label="Gluten-free" color="warning" />
             <Chip label="Dairy-free" color="warning" />
           </Stack>
-          <Typography variant="h6" component="h3" gutterBottom>
+
+          <Typography
+            variant="caption"
+            sx={{ margin: "10px 0", display: "block" }}
+            style={{
+              fontWeight: 600,
+              fontSize: "20px",
+              textTransform: "uppercase",
+            }}
+          >
             Ingredients
           </Typography>
           <Typography variant="body1" component="p" sx={{ margin: "10px 0" }}>
@@ -126,7 +145,15 @@ const ProductDetail: React.FC = () => {
             May Contain: Gluten, Wheat, Fish, Crustacean, Egg, Mollusc, Milk,
             Peanut, Soy, Tree Nuts, Sulphites, Sesame.
           </Typography>
-          <Typography variant="h6" component="h3">
+          <Typography
+            variant="caption"
+            sx={{ display: "block" }}
+            style={{
+              fontWeight: 600,
+              fontSize: "20px",
+              textTransform: "uppercase",
+            }}
+          >
             Product Claims
           </Typography>
           <Typography variant="body1" component="p">
