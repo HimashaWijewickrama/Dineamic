@@ -5,6 +5,8 @@ import { CartProvider } from "./Contexts/CartProvider";
 import { ProductProvider } from "./Contexts/ProductProvider";
 import Checkout from "./Pages/Checkout";
 import Home from "./Pages/Home";
+import AppTopBar from "./Components/AppTopBar";
+import Header from "./Pages/Header";
 
 export default function App() {
   return (
@@ -12,6 +14,8 @@ export default function App() {
       <BrowserRouter>
         <CartProvider>
           <ProductProvider>
+            <AppTopBar />
+            <Header />
             <Routes>
               <Route path="/home" element={<Home />}></Route>
               <Route path="/checkout" element={<Checkout />}></Route>
