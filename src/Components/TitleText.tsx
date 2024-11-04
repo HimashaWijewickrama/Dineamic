@@ -1,5 +1,5 @@
-import React from "react";
 import { Typography } from "@mui/material";
+import React from "react";
 
 interface TitleTextProps {
   title: any;
@@ -8,14 +8,14 @@ interface TitleTextProps {
 export const TitleText: React.FC<TitleTextProps> = ({ title }) => {
   return (
     <Typography
-      variant="caption"
       style={{
-        textShadow: "0.6px 3px #e1e4e8",
-        letterSpacing: "0.2rem",
+        textShadow: "0.3px 1,5px #e1e4e8",
+        letterSpacing: "0.01rem",
         textTransform: "uppercase",
-        fontSize: "34px",
+        fontSize: "24px",
         fontWeight: 600,
-        fontFamily: "Julius Sans One serif",
+        fontFamily: "Roboto, sans-serif",
+        fontStyle: "normal",
       }}
       sx={{ display: "block" }}
     >

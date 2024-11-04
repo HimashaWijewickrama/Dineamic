@@ -1,25 +1,30 @@
+import { FitnessCenterTwoTone } from "@mui/icons-material";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
-import { Link, Typography } from "@mui/material";
+import { Chip, Typography } from "@mui/material";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
+import ButtonBase from "@mui/material/ButtonBase";
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import CardHeader from "@mui/material/CardHeader";
-import CardMedia from "@mui/material/CardMedia";
 import ClickAwayListener from "@mui/material/ClickAwayListener";
 import Divider from "@mui/material/Divider";
 import IconButton from "@mui/material/IconButton";
-import ButtonBase from "@mui/material/ButtonBase";
 import Paper from "@mui/material/Paper";
 import Stack from "@mui/material/Stack";
 import { styled } from "@mui/material/styles";
 import Tooltip from "@mui/material/Tooltip";
 import React, { useState } from "react";
-import { useCart } from "./CartProvider";
-import { RatingProduct } from "./RatingProduct";
 import { useNavigate } from "react-router-dom";
+import { useCart } from "./CartProvider";
+import { NutritionBoxText } from "./NutritionBoxText";
+import { OverLineText } from "./OverLineText";
+import { PriceBoxText } from "./PriceBoxText";
+import { RatingProduct } from "./RatingProduct";
+import { SubTitleText } from "./SubTitleText";
+import { TitleText } from "./TitleText";
 interface ProductProps {
   prodid: number;
   prodtitle: string;
@@ -115,7 +120,6 @@ export const SingleProduct: React.FC<ProductProps> = ({
   prodid,
   prodtitle,
   prodimageurl,
-  prodimagealt,
   prodingredient,
   prodprice,
   prodquantity,
@@ -144,7 +148,7 @@ export const SingleProduct: React.FC<ProductProps> = ({
 
   const handleAddToCart = () => {
     addToCart({
-      id: prodid, // Use an appropriate id, assuming prodtitle is unique
+      id: prodid,
       name: prodtitle,
       price: prodprice,
       quantity: 1, // Default quantity added to cart
@@ -159,7 +163,6 @@ export const SingleProduct: React.FC<ProductProps> = ({
   const handleNavigateToDetail = () => {
     navigate(`/product/${prodid}`);
   };
-
 
   return (
     <Card sx={{ maxWidth: 345 }} style={{ border: "1px solid #E8E8E8" }}>
@@ -186,31 +189,13 @@ export const SingleProduct: React.FC<ProductProps> = ({
             </Tooltip>
           </ClickAwayListener>
         }
-        title={
-          <Typography
-            variant="overline"
-            gutterBottom
-            sx={{ display: "block" }}
-            style={{ fontSize: "24px", marginBottom: 0, textAlign: "center" }}
-          >
-            {prodtitle}
-          </Typography>
-        }
+        title={<TitleText title={prodtitle} />}
         subheader={
-          <Typography
-            variant="overline"
-            style={{ fontSize: "10px", padding: 0, color: "red" }}
-          >
-            *Quantity Of Per Serving is {prodquantity}
-          </Typography>
+          <OverLineText
+            overlinetext={"*Quantity Of Per Serving is " + prodquantity}
+          />
         }
       />
-      {/* <CardMedia
-        component="img"
-        height="250"
-        image={prodimageurl}
-        alt={prodimagealt}
-      /> */}
       <ImageButton
         focusRipple
         style={{
@@ -245,22 +230,8 @@ export const SingleProduct: React.FC<ProductProps> = ({
           divider={<Divider orientation="vertical" flexItem />}
           spacing={9}
         >
-          <Typography
-            variant="caption"
-            gutterBottom
-            sx={{ display: "block" }}
-            style={{ fontWeight: 600, fontSize: "20px" }}
-          >
-            {prodprice} LKR
-          </Typography>
-          <Typography
-            variant="caption"
-            gutterBottom
-            sx={{ display: "block" }}
-            style={{ fontWeight: 600, fontSize: "20px" }}
-          >
-            {prodquantity}
-          </Typography>
+          <PriceBoxText priceboxtext={prodprice + " LKR"} />
+          <PriceBoxText priceboxtext={prodquantity} />
         </Stack>
         <br />
         <Stack
@@ -269,78 +240,35 @@ export const SingleProduct: React.FC<ProductProps> = ({
           spacing={2}
         >
           <Item>
-            <Typography
-              variant="caption"
-              gutterBottom
-              sx={{ display: "block" }}
-              style={{ fontWeight: 600 }}
-            >
-              {prodprotein}
-            </Typography>
-            <Typography
-              variant="caption"
-              gutterBottom
-              sx={{ display: "block" }}
-            >
+            <NutritionBoxText nutroboxtext={prodprotein} />
+            <Typography variant="caption" sx={{ display: "block" }}>
               Protein
             </Typography>
           </Item>
           <Item>
-            <Typography
-              variant="caption"
-              gutterBottom
-              sx={{ display: "block" }}
-              style={{ fontWeight: 600 }}
-            >
-              {prodfat}
-            </Typography>
-            <Typography
-              variant="caption"
-              gutterBottom
-              sx={{ display: "block" }}
-            >
+            <NutritionBoxText nutroboxtext={prodfat} />
+
+            <Typography variant="caption" sx={{ display: "block" }}>
               Fat
             </Typography>
           </Item>
           <Item>
-            <Typography
-              variant="caption"
-              gutterBottom
-              sx={{ display: "block" }}
-              style={{ fontWeight: 600 }}
-            >
-              {prodcarb}
-            </Typography>
-            <Typography
-              variant="caption"
-              gutterBottom
-              sx={{ display: "block" }}
-            >
+            <NutritionBoxText nutroboxtext={prodcarb} />
+
+            <Typography variant="caption" sx={{ display: "block" }}>
               Carbs
             </Typography>
           </Item>
         </Stack>
       </Div>
       <CardContent>
-        <Typography
-          variant="caption"
-          gutterBottom
-          sx={{ display: "block" }}
-          style={{ fontWeight: 600, textAlign: "left" }}
-        >
-          Main Ingredients
-        </Typography>
-        <Typography
-          variant="caption"
-          gutterBottom
-          sx={{ display: "block" }}
-          style={{ fontWeight: 400, textAlign: "left" }}
-        >
-          {prodingredient}
-          <Link href="#" underline="none">
-            View More Details ...
-          </Link>
-        </Typography>
+        <SubTitleText subTitle={"Benefits"} />
+        <Stack direction="row" spacing={0.5}>
+          <Chip label="checked" icon={<FitnessCenterTwoTone />} />
+          <Chip label="checked" icon={<FitnessCenterTwoTone />} />
+          <Chip label="checked" icon={<FitnessCenterTwoTone />} />
+          <br />
+        </Stack>
       </CardContent>
       <CardActions>
         <Box sx={{ width: "100%" }}>

@@ -1,4 +1,3 @@
-import React, { useState, useEffect } from "react";
 import {
   Avatar,
   Box,
@@ -10,13 +9,16 @@ import {
   Typography,
 } from "@mui/material";
 import Grid from "@mui/material/Grid";
+import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
 import BenefitList from "./BenefitList";
+import { ContentText } from "./ContentText";
+import { OverLineText } from "./OverLineText";
+import { PriceBoxText } from "./PriceBoxText";
 import { useProductContext } from "./ProductProvider";
 import { SubTitleText } from "./SubTitleText";
 import { TitleText } from "./TitleText";
-import { ContentText } from "./ContentText";
 
 const productImage = {
   width: "80%",
@@ -91,29 +93,20 @@ const ProductDetail: React.FC = () => {
           </Box>
         </Grid>
         <Grid item xs={12} sm={6}>
-          {/* <Typography
-            variant="overline"
-            gutterBottom
-            sx={{ display: "block" }}
-            style={{ fontSize: "28px", marginBottom: 0 }}
-          > */}
           <TitleText title={product.name} />
-          {/* </Typography> */}
-          <Typography
-            variant="caption"
-            gutterBottom
-            sx={{ margin: "10px 0", display: "block" }}
-            style={{ fontWeight: 600, fontSize: "20px" }}
+          <br />
+          <Stack
+            direction="row"
+            divider={<Divider orientation="vertical" flexItem />}
+            spacing={2}
           >
-            {product.price} LKR | {product.quantity}
-          </Typography>
-          <Typography
-            variant="overline"
-            style={{ fontSize: "10px", color: "red" }}
-            // sx={{ margin: "10px 0" }}
-          >
-            *Quantity Of Per Serving is {product.quantity}
-          </Typography>
+            <PriceBoxText priceboxtext={product.price + " LKR"} />
+            <PriceBoxText priceboxtext={product.quantity} />
+          </Stack>
+          <br />
+          <OverLineText
+            overlinetext={"*Quantity Of Per Serving is " + product.quantity}
+          />
           <br />
 
           <Rating name="read-only" value={4} readOnly />
@@ -129,6 +122,7 @@ const ProductDetail: React.FC = () => {
             <Chip label="Gluten-free" color="warning" />
             <Chip label="Dairy-free" color="warning" />
           </Stack>
+
           <SubTitleText subTitle={"Ingredient"} />
           <ContentText
             contentText={
@@ -139,7 +133,8 @@ const ProductDetail: React.FC = () => {
             contentText={
               "May Contain: Gluten, Wheat, Fish, Crustacean, Egg, Mollusc, Milk, Peanut, Soy, Tree Nuts, Sulphites, Sesame."
             }
-          /><br/>
+          />
+          <br />
           <SubTitleText subTitle={"Product Claims"} />
 
           <Typography variant="body1" component="p">

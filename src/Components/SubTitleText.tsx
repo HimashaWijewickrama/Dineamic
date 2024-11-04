@@ -1,5 +1,5 @@
-import React from "react";
 import { Typography } from "@mui/material";
+import React from "react";
 
 interface SubTitleTextProps {
   subTitle: any;
@@ -10,12 +10,13 @@ export const SubTitleText: React.FC<SubTitleTextProps> = ({ subTitle }) => {
     <Typography
       variant="caption"
       style={{
-        textShadow: "0.6px 3px #e1e4e8",
-        letterSpacing: "0.08rem",
-        fontSize: "22px",
-        textTransform: "uppercase",
+        textShadow: "0.2px 1px #e1e4e8",
+        letterSpacing: "0.07rem",
+        fontSize: "20px",
+        textTransform: "capitalize",
         fontWeight: 500,
-        fontFamily: "Julius Sans One serif",
+        fontFamily: "Roboto, sans-serif",
+        textAlign: "left",
       }}
       gutterBottom
       sx={{ display: "block" }}

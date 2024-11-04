@@ -1,5 +1,5 @@
-import React from "react";
 import { Typography } from "@mui/material";
+import React from "react";
 
 interface ContentTextProps {
   contentText: any;
@@ -12,7 +12,7 @@ export const ContentText: React.FC<ContentTextProps> = ({ contentText }) => {
         textTransform: "capitalize",
         fontSize: "15px",
         fontWeight: 400,
-        fontFamily: "Forum, serif",
+        fontFamily: "Roboto, sans-serif",
         fontStyle: "normal",
       }}
       sx={{ display: "block" }}
