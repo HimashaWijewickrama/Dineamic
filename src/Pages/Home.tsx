@@ -1,5 +1,5 @@
 import AppTopBar from "../Components/AppTopBar";
-import { CartProvider } from "../Components/CartProvider";
+import { CartProvider } from "../Contexts/CartProvider";
 import CustomBreadcrumb from "../Components/CustomBreadcrumb";
 import MenuItems from "./MenuItems";
 

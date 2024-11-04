@@ -18,7 +18,7 @@ import { styled } from "@mui/material/styles";
 import Tooltip from "@mui/material/Tooltip";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useCart } from "./CartProvider";
+import { useCart } from "../Contexts/CartProvider";
 import { NutritionBoxText } from "./NutritionBoxText";
 import { OverLineText } from "./OverLineText";
 import { PriceBoxText } from "./PriceBoxText";

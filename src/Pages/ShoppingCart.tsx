@@ -13,21 +13,18 @@ import SwipeableDrawer from "@mui/material/SwipeableDrawer";
 import * as React from "react";
 import { useNavigate } from "react-router-dom";
 import CartItemController from "../Components/CartItemController";
-import { useCart } from "../Components/CartProvider";
+import { useCart } from "../Contexts/CartProvider";
 import { sampleProductsData } from "../data/sampleProductsData";
 
 export default function ShoppingCart() {
   const [open, setOpen] = React.useState(false);
+  const [isButtonDisabled, setButtonDisabled] = React.useState(true);
   const { cartItems, cartCount, removeFromCart } = useCart();
 
   const navigate = useNavigate();
 
   const handleClose = () => {
     setOpen(false);
-  };
-  const handleOpen = () => {
-    // setOpen(true);
-    navigate("/checkout");
   };
 
   const [drawerOpen, setDrawerOpen] = React.useState(false);
@@ -45,6 +42,17 @@ export default function ShoppingCart() {
     return cartItems.reduce((total, product, index) => {
       return total + product.price * itemCounts[index];
     }, 0);
+  };
+
+  React.useEffect(() => {
+    setButtonDisabled(calculateSubtotal() <= 0);
+  }, [itemCounts]); // Re-run effect when itemCounts changes
+
+  const handleCheckoutBtn = () => {
+    if (calculateSubtotal() > 0) {
+      setButtonDisabled(false);
+      navigate("/checkout");
+    }
   };
 
   const list = () => (
@@ -151,7 +159,11 @@ export default function ShoppingCart() {
                 Subtotal (Including taxes) : <br />
                 {calculateSubtotal().toFixed(2)} LKR
               </Typography>
-              <Button variant="contained" onClick={handleOpen}>
+              <Button
+                variant="contained"
+                onClick={handleCheckoutBtn}
+                disabled={isButtonDisabled}
+              >
                 Check Out
               </Button>
             </>

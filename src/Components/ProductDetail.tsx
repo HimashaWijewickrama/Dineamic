@@ -16,7 +16,7 @@ import BenefitList from "./BenefitList";
 import { ContentText } from "./ContentText";
 import { OverLineText } from "./OverLineText";
 import { PriceBoxText } from "./PriceBoxText";
-import { useProductContext } from "./ProductProvider";
+import { useProductContext } from "../Contexts/ProductProvider";
 import { SubTitleText } from "./SubTitleText";
 import { TitleText } from "./TitleText";
 
