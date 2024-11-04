@@ -74,7 +74,6 @@ export default function Checkout(props: { disableCustomTheme?: boolean }) {
           }}
         >
           <Info />
-          {/* <Info price={activeStep >= 2 ? "144.97 LKR" : "134.98 LKR"} /> */}
         </Box>
       </Grid>
       <Grid
