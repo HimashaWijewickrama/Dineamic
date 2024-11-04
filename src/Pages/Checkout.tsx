@@ -195,7 +195,11 @@ export default function Checkout(props: { disableCustomTheme?: boolean }) {
               <Button
                 variant="contained"
                 sx={{ alignSelf: "start", width: { xs: "100%", sm: "auto" } }}
-                onClick={() => navigate("/home")}
+                onClick={() => {
+                  localStorage.clear();
+                  navigate("/home");
+                  window.location.reload();
+                }}
               >
                 Go to the home
               </Button>

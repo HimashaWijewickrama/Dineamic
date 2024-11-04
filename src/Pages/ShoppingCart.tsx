@@ -52,11 +52,11 @@ export default function ShoppingCart() {
     const subtotal = calculateSubtotal();
     if (subtotal > 0) {
       setButtonDisabled(false);
-      navigate("/checkout", { 
-        state: { 
-          subtotal: subtotal, 
-          itemCounts: itemCounts // Ensure this is correctly passed
-        } 
+      navigate("/checkout", {
+        state: {
+          subtotal: subtotal,
+          itemCounts: itemCounts, // Ensure this is correctly passed
+        },
       });
     }
   };

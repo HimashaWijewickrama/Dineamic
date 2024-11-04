@@ -27,8 +27,7 @@ export default function Info() {
               secondary={`${product.price} LKR * ${itemCounts[index] || 0}`} // Use itemCounts for quantity with default
             />
             <Typography variant="body1" sx={{ fontWeight: "medium" }}>
-              {(product.price * (itemCounts[index] || 0)).toFixed(2)} LKR 
-              {/* // Calculate total price with default */}
+              {(product.price * (itemCounts[index] || 0)).toFixed(2)} LKR
             </Typography>
           </ListItem>
         ))}

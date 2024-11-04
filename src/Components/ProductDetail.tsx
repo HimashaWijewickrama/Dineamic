@@ -144,7 +144,10 @@ const ProductDetail: React.FC = () => {
           <Button
             variant="contained"
             sx={{ margin: "20px 0", justifyContent: "center" }}
-            onClick={() => navigate("/home")}
+            onClick={() => {
+              // Navigate to home
+              navigate("/home");
+            }}
           >
             Back to Home
           </Button>
