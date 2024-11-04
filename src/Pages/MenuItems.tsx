@@ -46,7 +46,7 @@ export default function MenuItems() {
           <Grid key={product.id} size={{ xs: 6, sm: 4, md: 3 }}>
             {[0].map((elevation) => (
               <Item key={elevation} elevation={elevation}>
-                <Badge color="secondary" badgeContent={index + 1}>
+                <Badge color="secondary" badgeContent={product.id}>
                   <>
                     <SingleProduct
                       prodid={product.id}
