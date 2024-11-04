@@ -1,5 +1,4 @@
-// cartprovider
-import React, { createContext, useContext, useState } from "react";
+import React, { createContext, useContext, useEffect, useState } from "react";
 
 interface CartItem {
   id: number;
@@ -12,8 +11,11 @@ interface CartItem {
 interface CartContextType {
   cartItems: CartItem[];
   cartCount: number;
+  totalPrice: number;
   addToCart: (product: CartItem) => void;
   removeFromCart: (id: number) => void;
+  increaseQuantity: (id: number) => void;
+  decreaseQuantity: (id: number) => void;
 }
 
 const CartContext = createContext<CartContextType | undefined>(undefined);
@@ -27,7 +29,21 @@ export const useCart = () => {
 export const CartProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
-  const [cartItems, setCartItems] = useState<CartItem[]>([]);
+  const [cartItems, setCartItems] = useState<CartItem[]>(() => {
+    const storedCart = localStorage.getItem("cartItems");
+    return storedCart ? JSON.parse(storedCart) : [];
+  });
+
+  const totalPrice = cartItems.reduce(
+    (total, product) => total + product.price * product.quantity,
+    0
+  );
+
+  const cartCount = cartItems.reduce((total, item) => total + item.quantity, 0);
+
+  useEffect(() => {
+    localStorage.setItem("cartItems", JSON.stringify(cartItems));
+  }, [cartItems]);
 
   const addToCart = (product: CartItem) => {
     setCartItems((prevCartItems) => {
@@ -49,11 +65,37 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({
     );
   };
 
-  const cartCount = cartItems.reduce((total, item) => total + item.quantity, 0);
+  const increaseQuantity = (id: number) => {
+    setCartItems((prevCartItems) =>
+      prevCartItems.map((item) =>
+        item.id === id ? { ...item, quantity: item.quantity + 1 } : item
+      )
+    );
+  };
+
+  const decreaseQuantity = (id: number) => {
+    setCartItems((prevCartItems) =>
+      prevCartItems
+        .map((item) =>
+          item.id === id && item.quantity > 1
+            ? { ...item, quantity: item.quantity - 1 }
+            : item
+        )
+        .filter((item) => item.quantity > 0)
+    );
+  };
 
   return (
     <CartContext.Provider
-      value={{ cartItems, cartCount, addToCart, removeFromCart }}
+      value={{
+        cartItems,
+        cartCount,
+        totalPrice,
+        addToCart,
+        removeFromCart,
+        increaseQuantity,
+        decreaseQuantity,
+      }}
     >
       {children}
     </CartContext.Provider>

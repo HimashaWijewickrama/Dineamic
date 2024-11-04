@@ -1,35 +1,33 @@
-import * as React from 'react';
-
-import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
-import ListItemText from '@mui/material/ListItemText';
-import Typography from '@mui/material/Typography';
+import { List, ListItem, ListItemText, Typography } from "@mui/material";
+import React from "react";
+import { useLocation } from "react-router-dom";
 
 const products = [
   {
-    name: 'SUSHI',
-    desc: '795 LKR * 1',
-    price: '795.00 LKR',
+    name: "SUSHI",
+    desc: "795 LKR * 1",
+    price: "795.00 LKR",
   },
   {
-    name: 'CHICKEN STEW',
-    desc: '550 LKR * 2',
-    price: '1200 LKR',
-  }
+    name: "CHICKEN STEW",
+    desc: "550 LKR * 2",
+    price: "1100 LKR",
+  },
 ];
 
-interface InfoProps {
-  totalPrice: string;
-}
+export default function Info() {
 
-export default function Info({ totalPrice }: InfoProps) {
+  const location = useLocation();
+  const subtotal = location.state?.subtotal;
+
   return (
     <React.Fragment>
-      <Typography variant="subtitle2" sx={{ color: 'text.secondary' }}>
+      <Typography variant="subtitle2" sx={{ color: "text.secondary" }}>
         Sub Total (Including Taxes)
       </Typography>
       <Typography variant="h4" gutterBottom>
-        {totalPrice}
+        {subtotal?.toFixed(2)} LKR
+        <br />
       </Typography>
       <List disablePadding>
         {products.map((product) => (
@@ -39,7 +37,7 @@ export default function Info({ totalPrice }: InfoProps) {
               primary={product.name}
               secondary={product.desc}
             />
-            <Typography variant="body1" sx={{ fontWeight: 'medium' }}>
+            <Typography variant="body1" sx={{ fontWeight: "medium" }}>
               {product.price}
             </Typography>
           </ListItem>
