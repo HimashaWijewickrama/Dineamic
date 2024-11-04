@@ -49,9 +49,15 @@ export default function ShoppingCart() {
   }, [itemCounts]); // Re-run effect when itemCounts changes
 
   const handleCheckoutBtn = () => {
-    if (calculateSubtotal() > 0) {
+    const subtotal = calculateSubtotal();
+    if (subtotal > 0) {
       setButtonDisabled(false);
-      navigate("/checkout", { state: { subtotal: calculateSubtotal() } });
+      navigate("/checkout", { 
+        state: { 
+          subtotal: subtotal, 
+          itemCounts: itemCounts // Ensure this is correctly passed
+        } 
+      });
     }
   };
 
