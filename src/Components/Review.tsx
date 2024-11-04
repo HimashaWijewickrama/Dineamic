@@ -7,8 +7,8 @@ import ListItem from "@mui/material/ListItem";
 import ListItemText from "@mui/material/ListItemText";
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
-import { useCart } from "../Contexts/CartProvider";
 import { useLocation } from "react-router-dom";
+import { useCart } from "../Contexts/CartProvider";
 
 const addresses = ["1 MUI Drive", "Reactville", "Anytown", "99999", "USA"];
 const payments = [
@@ -20,9 +20,8 @@ const payments = [
 
 export default function Review() {
   const location = useLocation();
-  const { cartItems, cartCount } = useCart();
+  const { cartCount } = useCart();
   const subtotal = location.state?.subtotal || 0; // Default to 0 if undefined
-  const itemCounts = location.state?.itemCounts || []; // Default to an empty array if undefined
 
   return (
     <Stack spacing={2}>
