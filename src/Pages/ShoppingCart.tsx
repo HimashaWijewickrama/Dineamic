@@ -18,7 +18,7 @@ import { sampleProductsData } from "../data/sampleProductsData";
 
 export default function ShoppingCart() {
   const [open, setOpen] = React.useState(false);
-  const [isButtonDisabled, setButtonDisabled] = React.useState(true);
+  const [isButtonDisabled, setButtonDisabled] = React.useState(true)
   const { cartItems, cartCount, removeFromCart } = useCart();
 
   const navigate = useNavigate();
@@ -26,6 +26,7 @@ export default function ShoppingCart() {
   const handleClose = () => {
     setOpen(false);
   };
+
 
   const [drawerOpen, setDrawerOpen] = React.useState(false);
   const toggleDrawer = (open: boolean) => {
@@ -47,6 +48,7 @@ export default function ShoppingCart() {
   React.useEffect(() => {
     setButtonDisabled(calculateSubtotal() <= 0);
   }, [itemCounts]); // Re-run effect when itemCounts changes
+  
 
   const handleCheckoutBtn = () => {
     if (calculateSubtotal() > 0) {
@@ -54,6 +56,8 @@ export default function ShoppingCart() {
       navigate("/checkout");
     }
   };
+
+
 
   const list = () => (
     <Box sx={{ width: 500 }} onKeyDown={() => toggleDrawer(false)}>
@@ -160,12 +164,13 @@ export default function ShoppingCart() {
                 {calculateSubtotal().toFixed(2)} LKR
               </Typography>
               <Button
-                variant="contained"
-                onClick={handleCheckoutBtn}
-                disabled={isButtonDisabled}
-              >
-                Check Out
-              </Button>
+      variant="contained"
+      onClick={handleCheckoutBtn}
+      disabled={isButtonDisabled}
+    >
+      Check Out
+    </Button>
+
             </>
           ) : (
             <Typography
