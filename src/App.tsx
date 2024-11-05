@@ -16,7 +16,7 @@ export default function App() {
             <AppTopBar />
             <LandingPage />
             <Routes>
-              <Route path="/product/list" element={<MenuItems />}></Route>
+              <Route path="/product-list" element={<MenuItems />}></Route>
               <Route path="/checkout" element={<Checkout />}></Route>
               <Route path="/product/:id" element={<ProductDetail />}></Route>
             </Routes>
