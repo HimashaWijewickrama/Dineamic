@@ -1,6 +1,3 @@
-import * as React from "react";
-import { useNavigate } from "react-router-dom";
-import ShoppingCart from "../Pages/ShoppingCart";
 import { Home } from "@mui/icons-material";
 import MoreIcon from "@mui/icons-material/MoreVert";
 import SearchIcon from "@mui/icons-material/Search";
@@ -13,6 +10,9 @@ import MenuItem from "@mui/material/MenuItem";
 import { styled } from "@mui/material/styles";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
+import * as React from "react";
+import { useNavigate } from "react-router-dom";
+import ShoppingCart from "../Pages/ShoppingCart";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -101,16 +101,17 @@ export default function AppTopBar() {
   const navigate = useNavigate();
 
   return (
-    <Box sx={{ flexGrow: 1 }} style={{ backgroundColor: "#000000" }}>
-      <AppBar position="static">
+    <Box sx={{ flexGrow: 1 }}>
+      <AppBar position="static" style={{ backgroundColor: "#C8B8A8" }}>
         <Toolbar>
           <Typography
             variant="h6"
             noWrap
             component="div"
             sx={{ display: { xs: "none", sm: "block" } }}
+            style={{ color: "black" }}
           >
-            DINEAMIC . 
+            DINEAMIC .
           </Typography>
           <Search>
             <SearchIconWrapper>
@@ -122,11 +123,13 @@ export default function AppTopBar() {
             />
           </Search>
           <Box sx={{ flexGrow: 1 }} />
-          <Box sx={{ display: { xs: "none", md: "flex" } }}>
+          <Box
+            sx={{ display: { xs: "none", md: "flex" } }}
+            style={{ color: "black" }}
+          >
             <IconButton
               size="large"
               aria-label="home"
-              color="inherit"
               onClick={() => navigate("/home")}
             >
               <Home />
@@ -140,7 +143,7 @@ export default function AppTopBar() {
               aria-controls={mobileMenuId}
               aria-haspopup="true"
               onClick={handleMobileMenuOpen}
-              color="inherit"
+              style={{ color: "black" }}
             >
               <MoreIcon />
             </IconButton>

@@ -68,7 +68,7 @@ export const sampleProductsData: ISampleProducts[] = [
   {
     id: 5,
     imageURL:
-      "https://images.unsplash.com/photo-1620572860868-45824e869129?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "https://images.unsplash.com/photo-1525351484163-7529414344d8?q=80&w=1780&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     name: "egg omelette",
     price: 100,
     ingredient: "egg, salt, oil, black pepper, salted butter ",
@@ -77,9 +77,9 @@ export const sampleProductsData: ISampleProducts[] = [
     fat: "1.4g",
     carb: "0.8g",
     sampleURL1:
-      "https://images.unsplash.com/photo-1612487439056-f2891265d047?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "https://images.unsplash.com/photo-1525351326368-efbb5cb6814d?q=80&w=1780&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     sampleURL2:
-      "https://images.unsplash.com/photo-1610328466269-1f36faad83c1?q=80&w=1780&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "https://images.unsplash.com/photo-1525351586624-ca549fbe02df?q=80&w=1936&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   },
   {
     id: 6,

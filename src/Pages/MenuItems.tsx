@@ -3,6 +3,7 @@ import Grid from "@mui/material/Grid2";
 import Paper from "@mui/material/Paper";
 import { experimentalStyled as styled } from "@mui/material/styles";
 import React, { useState } from "react";
+import { PageTitleText } from "../Components/PageTitleText";
 import ProductPagination from "../Components/ProductPagination";
 import { SingleProduct } from "../Components/SingleProduct";
 import { sampleProductsData } from "../data/sampleProductsData";
@@ -36,7 +37,8 @@ export default function MenuItems() {
     setCurrentPage(value);
   };
   return (
-    <>
+    <div>
+      <PageTitleText />
       <Grid
         container
         spacing={{ xs: 2, md: 3 }}
@@ -72,6 +74,6 @@ export default function MenuItems() {
         page={currentPage}
         onChange={handlePageChange}
       />
-    </>
+    </div>
   );
 }
