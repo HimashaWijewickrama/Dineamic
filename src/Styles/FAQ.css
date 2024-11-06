@@ -1,0 +1,38 @@
+.faq-section {
+    max-width: 900px;
+    margin: 50px auto;
+    padding: 20px;
+    font-family: 'Arial', sans-serif;
+}
+
+.faq-section h2 {
+    font-size: 32px;
+    font-weight: bold;
+    font-style: italic;
+    margin-bottom: 30px;
+    text-align: left;
+    color: #333;
+}
+
+.faq-question {
+    font-size: 18px;
+    font-weight: bold;
+    color: #6A1B9A; /* Customize this color to match the design */
+}
+
+.faq-answer {
+    font-size: 16px;
+    color: #555;
+}
+
+.MuiAccordionSummary-root {
+    border-bottom: 1px solid #ddd;
+}
+
+.MuiAccordion-root {
+    box-shadow: none;
+}
+
+.MuiAccordionDetails-root {
+    padding: 10px 16px;
+}

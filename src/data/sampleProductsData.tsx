@@ -194,4 +194,21 @@ export const sampleProductsData: ISampleProducts[] = [
     sampleURL2:
       "https://images.unsplash.com/photo-1604909053796-048c8c9801a9?q=80&w=1780&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   },
+  {
+    id: 13,
+    imageURL:
+      "https://images.unsplash.com/photo-1626322751504-930506dd41ca?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    name: "dumplings",
+    price: 400,
+    ingredient:
+      "cabage, garlic, black pepper, tomato, pickles, cheese slices, olive oil ",
+    quantity: "360g",
+    protein: "8.0g",
+    fat: "0.04g",
+    carb: "0.5g",
+    sampleURL1:
+      "https://images.unsplash.com/photo-1606503483671-1b503bd16f82?q=80&w=1964&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    sampleURL2:
+      "https://images.unsplash.com/photo-1606503481351-0231ee0cb92a?q=80&w=1965&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  },
 ];

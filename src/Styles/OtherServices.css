@@ -1,0 +1,70 @@
+.services-section {
+    text-align: center;
+    color: #333;
+    margin: 50px auto;
+    /* max-width: 800px; */
+    font-family: Arial, sans-serif;
+}
+
+.services-section h2 {
+    color: #a3872d;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.description {
+    color: #777;
+    line-height: 1.6;
+    margin: 0 20px;
+}
+
+.food-delivery {
+    margin-top: 20px;
+}
+
+.food-delivery h3 {
+    font-size: 24px;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.time {
+    font-size: 40px;
+    font-weight: bold;
+}
+
+.subtext {
+    font-size: 14px;
+    color: #555;
+    margin-top: 5px;
+}
+
+.features {
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+}
+
+.feature {
+    flex: 1;
+    padding: 0 20px;
+    text-align: center;
+}
+
+.feature img {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 10px;
+}
+
+.feature h4 {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+}
+
+.feature p {
+    font-size: 14px;
+    color: #777;
+    line-height: 1.4;
+}

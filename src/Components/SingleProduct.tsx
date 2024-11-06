@@ -165,6 +165,7 @@ export const SingleProduct: React.FC<ProductProps> = ({
   };
 
   return (
+    <div>
     <Card sx={{ maxWidth: 345 }} style={{ border: "1px solid #E8E8E8" }}>
       <CardHeader
         action={
@@ -301,5 +302,8 @@ export const SingleProduct: React.FC<ProductProps> = ({
         </Box>
       </CardActions>
     </Card>
+
+    </div>
+
   );
 };
