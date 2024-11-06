@@ -1,9 +1,10 @@
 import { Box } from "@mui/material";
 import "../Styles/LandingPage.css";
+import NavDownBtn from "./NavDownBtn";
 
 export default function LandingPage() {
   return (
-    <Box sx={{ flexGrow: 1 }}>
+    <Box sx={{ flexGrow: 1 }} className="landing-page">
       <div className="body">
         <div className="overlay">
           <h1>
@@ -18,8 +19,10 @@ export default function LandingPage() {
               style={{ textAlign: "center" }}
             >
               Door Step
-            </span>
+            </span><br/>
+            <NavDownBtn/>
           </h1>
+      
         </div>
 
         <div className="text">

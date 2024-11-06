@@ -4,11 +4,12 @@ import React from 'react';
 import '../Styles/OtherServices.css';
 import DeliveryDiningIcon from '@mui/icons-material/DeliveryDining';
 import Service from './Service';
+import { HomeSectionTitle } from './HomeSectionTitle';
 
 const OtherServices: React.FC = () => {
     return (
         <div className="services-section">
-            <h2>Other Services</h2>
+            <HomeSectionTitle homesectiontitle="OUR SERVICES"/>
             <p className="description">
                 We have designed a range of Gift Vouchers, keeping you in mind. It’s perfect for any occasion and can
                 be utilized at any of our hotel’s restaurants or on The Kingsbury Indulgence platform. That’s not all –

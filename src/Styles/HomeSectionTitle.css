@@ -1,0 +1,22 @@
+.home-section-title {
+    position: relative;
+    font-size: 2.5rem; /* Adjust as needed */
+    text-align: center;
+    font-family: "Ribeye Marrow", serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+  
+  .home-section-title::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: -5px; /* Adjust position below the text */
+    transform: translateX(-50%);
+    width: 10%; /* Adjust width for the length of the underline */
+    height: 8px; /* Adjust height for thickness of the underline */
+    background: #a3872d; /* Curved underline color */
+    border-radius: 50% / 100%; /* Creates a curved effect */
+    opacity: 0.5; /* Optional: Adjust opacity */
+  }
+  

@@ -211,4 +211,21 @@ export const sampleProductsData: ISampleProducts[] = [
     sampleURL2:
       "https://images.unsplash.com/photo-1606503481351-0231ee0cb92a?q=80&w=1965&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   },
+  {
+    id: 14,
+    imageURL:
+      "https://images.unsplash.com/photo-1594041680534-e8c8cdebd659?q=80&w=1964&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    name: "Beef Steak",
+    price: 400,
+    ingredient:
+      "cabage, garlic, black pepper, tomato, pickles, cheese slices, olive oil ",
+    quantity: "360g",
+    protein: "8.0g",
+    fat: "0.04g",
+    carb: "0.5g",
+    sampleURL1:
+      "https://images.unsplash.com/photo-1608877907149-a206d75ba011?q=80&w=1935&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    sampleURL2:
+      "https://images.unsplash.com/photo-1594041680534-e8c8cdebd659?q=80&w=1964&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  },
 ];

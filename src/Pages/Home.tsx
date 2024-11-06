@@ -9,6 +9,7 @@ import BestSeller from "../Components/BestSeller";
 import FeatureImg from "../Components/FeatureImg";
 import Counter from "../Components/Counter";
 import AnimatedMultiBtn from "../Components/AnimatedMultiBtn";
+import NavDownBtn from "../Components/NavDownBtn";
 
 export default function Home() {
   return (
@@ -22,6 +23,7 @@ export default function Home() {
       <BestSeller />
       <Branches />
       <AnimatedMultiBtn/>
+      <NavDownBtn/>
     </>
   );
 }
