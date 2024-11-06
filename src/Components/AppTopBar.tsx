@@ -13,6 +13,7 @@ import Typography from "@mui/material/Typography";
 import * as React from "react";
 import { useNavigate } from "react-router-dom";
 import ShoppingCart from "../Pages/ShoppingCart";
+import RestaurantMenuIcon from "@mui/icons-material/RestaurantMenu";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -92,6 +93,10 @@ export default function AppTopBar() {
         <p>Home</p>
       </MenuItem>
       <MenuItem>
+        <RestaurantMenuIcon />
+        <p>Menu</p>
+      </MenuItem>
+      <MenuItem>
         <ShoppingCart />
         <p>Cart</p>
       </MenuItem>
@@ -102,7 +107,7 @@ export default function AppTopBar() {
 
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static" style={{ backgroundColor: "#C8B8A8" }}>
+      <AppBar position="fixed" style={{ backgroundColor: "#C8B8A8" }}>
         <Toolbar>
           <Typography
             variant="h6"
@@ -134,6 +139,14 @@ export default function AppTopBar() {
             >
               <Home />
             </IconButton>
+            <IconButton
+              size="large"
+              aria-label="home"
+              onClick={() => navigate("/product-list")}
+            >
+              <RestaurantMenuIcon />
+            </IconButton>
+
             <ShoppingCart />
           </Box>
           <Box sx={{ display: { xs: "flex", md: "none" } }}>

@@ -7,6 +7,7 @@ import { CartProvider } from "./Contexts/CartProvider";
 import { ProductProvider } from "./Contexts/ProductProvider";
 import Checkout from "./Pages/Checkout";
 import MenuItems from "./Pages/MenuItems";
+import Home from "./Pages/Home";
 export default function App() {
   return (
     <>
@@ -14,8 +15,9 @@ export default function App() {
         <CartProvider>
           <ProductProvider>
             <AppTopBar />
-            <LandingPage />
+            {/* <LandingPage /> */}
             <Routes>
+              <Route path="/home" element={<Home />}></Route>
               <Route path="/product-list" element={<MenuItems />}></Route>
               <Route path="/checkout" element={<Checkout />}></Route>
               <Route path="/product/:id" element={<ProductDetail />}></Route>

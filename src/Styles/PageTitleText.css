@@ -1,20 +1,14 @@
 :root {
   --color-primary: hsl(230, 30%, 15%);
   --color-secondary: #181b46;
-  /* --background: hsl(230, 30%, 15%); */
-  --text: hsl(310, 100%, 95%);
-}
-
-body {
-  /* background-color: var(--background); */
-  color: var(--text);
 }
 
 blockquote {
   border-left: 100px solid;
   margin-left: 20px;
   font-family: "Yanone Kaffeesatz";
-  text-transform: capitalize;
+  text-transform: uppercase;
+  font-weight: 600;
   padding: 1rem 3rem 1rem 2rem;
   font-size: 2rem;
   -webkit-background-clip: text;

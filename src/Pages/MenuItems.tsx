@@ -37,8 +37,8 @@ export default function MenuItems() {
     setCurrentPage(value);
   };
   return (
-    <div>
-      <PageTitleText />
+    <div style={{paddingTop: "80px"}}>
+      <PageTitleText pagetitletext={"munu list"}/>
       <Grid
         container
         spacing={{ xs: 2, md: 3 }}

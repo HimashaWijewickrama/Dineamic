@@ -1,9 +1,16 @@
 import "../Styles/PageTitleText.css";
-export const PageTitleText = () => {
+
+interface PageTitleTextProps {
+  pagetitletext: any;
+}
+
+export const PageTitleText: React.FC<PageTitleTextProps> = ({
+  pagetitletext,
+}) => {
   return (
     <>
       <blockquote>
-        <p>Menu Items </p>
+        <p>{ pagetitletext } </p>
       </blockquote>
     </>
   );
