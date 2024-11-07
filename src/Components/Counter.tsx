@@ -1,12 +1,14 @@
+import {
+  DeliveryDining,
+  DinnerDining,
+  Diversity1,
+  Instagram,
+} from "@mui/icons-material";
+
+import { Container } from "@mui/material";
 import { useEffect } from "react";
 import "../Styles/Counter.css";
-import DeliveryDiningIcon from '@mui/icons-material/DeliveryDining';
-import DinnerDiningIcon from '@mui/icons-material/DinnerDining';
-import Diversity1Icon from '@mui/icons-material/Diversity1';
-import InstagramIcon from '@mui/icons-material/Instagram';
 import { HomeSectionTitle } from "./HomeSectionTitle";
-import { Divider } from "@mui/material";
-import LocalShippingIcon from '@mui/icons-material/LocalShipping';
 
 export default function Counter() {
   useEffect(() => {
@@ -39,11 +41,12 @@ export default function Counter() {
 
   return (
     <div className="counter-section">
-<HomeSectionTitle homesectiontitle="Moments that Count"/>
+      <HomeSectionTitle homesectiontitle="Moments that Count" />
+
       <section className="counters">
-        <div className="container">
+        <Container className="container">
           <article>
-            <Diversity1Icon sx={{ fontSize: 50 }}/>
+            <Diversity1 sx={{ fontSize: 80 }} />
             <div className="counter" data-target="60000">
               0
             </div>
@@ -53,7 +56,7 @@ export default function Counter() {
             </h6>
           </article>
           <article>
-            <DeliveryDiningIcon sx={{ fontSize: 50 }}/>
+            <DeliveryDining sx={{ fontSize: 80 }} />
             <div className="counter" data-target="15000">
               0
             </div>
@@ -63,7 +66,7 @@ export default function Counter() {
             </h6>
           </article>
           <article>
-            <DinnerDiningIcon sx={{ fontSize: 50 }}/>
+            <DinnerDining sx={{ fontSize: 80 }} />
             <div className="counter" data-target="9000">
               0
             </div>
@@ -73,16 +76,17 @@ export default function Counter() {
             </h6>
           </article>
           <article>
-            <InstagramIcon sx={{ fontSize: 50 }}/>
+            <Instagram sx={{ fontSize: 80 }} />
             <div className="counter" data-target="5000">
               0
             </div>
             <h6>
-              Social <br />
-              Likes
+              Social Media
+              <br />
+              Followers
             </h6>
           </article>
-        </div>
+        </Container>
       </section>
     </div>
   );
