@@ -8,77 +8,59 @@ export default function LandingPage() {
       <div className="body">
         <div className="overlay">
           <h1>
-            <span className="underlined underline-mask">Healthy </span>
+            Healthy Prepared Meals To Your
             <br />
-            <span className="underlined underline-clip">Prepared Meals </span>
+            <span className="underlined underline-overflow">Door Steps</span>
             <br />
-            To Your
-            <br />
-            <span
-              className="underlined underline-overflow"
-              style={{ textAlign: "center" }}
-            >
-              Door Step
-            </span><br/>
-            <NavDownBtn/>
+            <NavDownBtn />
           </h1>
-      
         </div>
 
         <div className="text">
           <div className="wrapper">
-            <div id="L" className="letter">
+            <div id="D" className="letter">
               D
             </div>
-            {/* <div className="shadow">D</div> */}
           </div>
           <div className="wrapper">
             <div id="I" className="letter">
               I
             </div>
-            {/* <div className="shadow">I</div> */}
-          </div>
-          <div className="wrapper">
-            <div id="G" className="letter">
-              N
-            </div>
-            {/* <div className="shadow">N</div> */}
-          </div>
-          <div className="wrapper">
-            <div id="H" className="letter">
-              E
-            </div>
-            {/* <div className="shadow">E</div> */}
-          </div>
-          <div className="wrapper">
-            <div id="T" className="letter">
-              A
-            </div>
-            {/* <div className="shadow">A</div> */}
           </div>
           <div className="wrapper">
             <div id="N" className="letter">
-              M
+              N
             </div>
-            {/* <div className="shadow">M</div> */}
           </div>
           <div className="wrapper">
             <div id="E" className="letter">
+              E
+            </div>
+          </div>
+          <div className="wrapper">
+            <div id="A" className="letter">
+              A
+            </div>
+          </div>
+          <div className="wrapper">
+            <div id="M" className="letter">
+              M
+            </div>
+          </div>
+          <div className="wrapper">
+            <div id="I" className="letter">
               I
             </div>
-            {/* <div className="shadow">I</div> */}
           </div>
           <div className="wrapper">
-            <div id="S" className="letter">
+            <div id="C" className="letter">
               C
             </div>
-            {/* <div className="shadow">C</div> */}
           </div>
           <div className="wrapper">
-            <div id="Stwo" className="letter">
+            <div id="Dot" className="letter">
               .
             </div>
-            {/* <div className="shadow">.</div> */}
           </div>
         </div>
       </div>

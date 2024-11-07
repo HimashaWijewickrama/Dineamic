@@ -1,4 +1,3 @@
-import React from "react";
 import "../Styles/NavDownBtn.css";
 const NavDownBtn = () => {
   return (
