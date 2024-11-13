@@ -28,24 +28,6 @@ const BestSeller: React.FC = () => {
               itemprice={product.price}
             />
           ))}
-          {/* <BestSellerItemCard
-            itemsrc="https://images.unsplash.com/photo-1658829457670-d80231baebe5?q=80&w=1973&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-            itemalt="EMMYLOU"
-            itemtitle="Hello"
-            itemdes="this is first one"
-          />{" "}
-          <BestSellerItemCard
-            itemsrc="https://images.unsplash.com/photo-1658829457670-d80231baebe5?q=80&w=1973&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-            itemalt="EMMYLOU"
-            itemtitle="Hello"
-            itemdes="this is first one"
-          />{" "}
-          <BestSellerItemCard
-            itemsrc="https://images.unsplash.com/photo-1658829457670-d80231baebe5?q=80&w=1973&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-            itemalt="EMMYLOU"
-            itemtitle="Hello"
-            itemdes="this is first one"
-          /> */}
         </div>
       </div>
     </div>
