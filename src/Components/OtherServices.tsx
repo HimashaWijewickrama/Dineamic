@@ -9,7 +9,7 @@ import { HomeSectionTitle } from './HomeSectionTitle';
 const OtherServices: React.FC = () => {
     return (
         <div className="services-section">
-            <HomeSectionTitle homesectiontitle="OUR SERVICES"/>
+            <HomeSectionTitle homesectiontitle="WHY CHOOSE US ?"/>
             <p className="description">
                 We have designed a range of Gift Vouchers, keeping you in mind. It’s perfect for any occasion and can
                 be utilized at any of our hotel’s restaurants or on The Kingsbury Indulgence platform. That’s not all –

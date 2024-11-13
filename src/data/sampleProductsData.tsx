@@ -181,8 +181,8 @@ export const sampleProductsData: ISampleProducts[] = [
     id: 12,
     imageURL:
       "https://images.unsplash.com/photo-1604909052583-bb464043e050?q=80&w=1780&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    name: "vegetable salad",
-    price: 400,
+    name: "veggie salad",
+    price: 580,
     ingredient:
       "cabage, garlic, black pepper, tomato, pickles, cheese slices, olive oil ",
     quantity: "360g",
@@ -198,8 +198,8 @@ export const sampleProductsData: ISampleProducts[] = [
     id: 13,
     imageURL:
       "https://images.unsplash.com/photo-1626322751504-930506dd41ca?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    name: "dumplings",
-    price: 400,
+    name: "dumpling",
+    price: 1500,
     ingredient:
       "cabage, garlic, black pepper, tomato, pickles, cheese slices, olive oil ",
     quantity: "360g",
@@ -227,5 +227,22 @@ export const sampleProductsData: ISampleProducts[] = [
       "https://images.unsplash.com/photo-1608877907149-a206d75ba011?q=80&w=1935&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     sampleURL2:
       "https://images.unsplash.com/photo-1594041680534-e8c8cdebd659?q=80&w=1964&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  },
+  {
+    id: 15,
+    imageURL:
+      "https://images.unsplash.com/photo-1713774788176-e284185f58db?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    name: "Waffle",
+    price: 400,
+    ingredient:
+      "cabage, garlic, black pepper, tomato, pickles, cheese slices, olive oil ",
+    quantity: "360g",
+    protein: "8.0g",
+    fat: "0.04g",
+    carb: "0.5g",
+    sampleURL1:
+      "https://images.unsplash.com/photo-1713774788179-e36fc040d810?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    sampleURL2:
+      "https://images.unsplash.com/photo-1713774786593-b3885bb93a19?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   },
 ];

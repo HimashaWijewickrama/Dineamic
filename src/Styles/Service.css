@@ -1,7 +1,7 @@
 .service-section img {
     --s: 15px;  /* size of the frame */
     --b: 2px;   /* border thickness */
-    --w: 200px; /* width of the image */
+    --w: 300px; /* width of the image */
     --c: #7B3B3B;
     
     width: var(--w);

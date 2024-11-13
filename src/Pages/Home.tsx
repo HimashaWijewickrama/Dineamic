@@ -16,11 +16,11 @@ export default function Home() {
     <>
       <LandingPage />
       <Counter />
+      <BestSeller />
       <OtherServices />
       <FAQ />
       <ContactForm />
       <FeedBack />
-      <BestSeller />
       <Branches />
       <AnimatedMultiBtn/>
       <NavDownBtn/>

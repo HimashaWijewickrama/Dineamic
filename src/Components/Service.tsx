@@ -6,7 +6,7 @@ export default function Service() {
       <img
         src="https://picsum.photos/id/111/300/300"
         alt="an old car"
-        style={{ margin: "60px" }}
+        style={{ margin: "10px" }}
       />
 
       <img
@@ -15,7 +15,7 @@ export default function Service() {
           color: "#668284",
           borderWidth: "1px",
           fontSize: "18px",
-          margin: "60px",
+          margin: "10px",
         }}
         alt="an old car"
       />
@@ -23,7 +23,7 @@ export default function Service() {
       <img
         src="https://picsum.photos/id/111/300/300"
         alt="an old car"
-        style={{ margin: "60px" }}
+        style={{ margin: "10px" }}
       />
 
       <img
@@ -32,7 +32,7 @@ export default function Service() {
           color: "#668284",
           borderWidth: "1px",
           fontSize: "18px",
-          margin: "60px",
+          margin: "10px",
         }}
         alt="an old car"
       />
