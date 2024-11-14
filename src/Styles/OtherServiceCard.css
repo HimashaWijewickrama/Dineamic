@@ -1,3 +1,6 @@
+.service-section {
+  margin-left: 10px;
+}
 .service-section img {
   margin: 0px;
   width: 300px;
@@ -9,7 +12,7 @@
       100% no-repeat,
     linear-gradient(90deg, #ebdf6f 2px, #0000 0 calc(100% - 2px), #ebdf6f 0) 50% /
       100% 100% no-repeat;
-  outline: 150px solid #0009; /* width / 2 */
+  outline: 150px solid rgba(229, 235, 182, 0.2); /* width / 2 */
   outline-offset: -180px; /* -1 * width / 2 - 2 * frame size */
   transition: 0.4s;
   cursor: pointer;

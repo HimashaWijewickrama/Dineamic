@@ -10,7 +10,7 @@ type OtherServiceCardProps = {
 
 const OtherServiceCard: React.FC<OtherServiceCardProps> = ({ url, alt }) => {
   return (
-    <div className="service-section" >
+    <div className="service-section">
       <img src={url} alt={alt} />
     </div>
   );

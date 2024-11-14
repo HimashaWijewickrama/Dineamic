@@ -4,22 +4,42 @@
   overflow: auto;
 }
 .otherservice-section .services .container {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-gap: 30px;
   margin-top: 20px;
   background-color: #a3872d;
   padding-top: 40px;
   padding-bottom: 40px;
   border-top: 3px solid #fff;
   backdrop-filter: blur(10px);
+  justify-content: flex-start;
+}
+
+.listItemText .MuiListItemText-primary {
+  font-size: 26px !important;
+  font-family: "Yanone Kaffeesatz", sans-serif !important;
+  font-weight: 600 !important;
+  text-align: left !important;
+  line-height: 20px !important;
+  letter-spacing: 3px !important;
+}
+
+.listItemText .MuiListItemText-secondary {
+  font-size: 18px !important;
+  font-family: "Yanone Kaffeesatz", sans-serif !important;
+  font-weight: 400 !important;
+  text-align: left !important;
+  line-height: 15px !important;
+  padding-top: 10px;
+  color: #fff;
+}
+
+.listItemAvatar {
+  background-color: #f7f2c5 !important;
+}
+.listItemIcon {
+  color: #a3872d !important;
 }
 
 @media (max-width: 700px) {
-  .otherservice-section .services .container {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
   .otherservice-section .services .container > div:nth-of-type(1),
   .otherservice-section .services .container > div:nth-of-type(2) {
     border-bottom: 1px solid rgb(247, 247, 247);
