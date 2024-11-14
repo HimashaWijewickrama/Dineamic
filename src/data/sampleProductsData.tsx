@@ -245,4 +245,21 @@ export const sampleProductsData: ISampleProducts[] = [
     sampleURL2:
       "https://images.unsplash.com/photo-1713774786593-b3885bb93a19?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   },
+  {
+    id: 16,
+    imageURL:
+      "https://images.unsplash.com/photo-1567890667330-e04cbfd52af3?q=80&w=1933&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    name: "cinamon rolls",
+    price: 400,
+    ingredient:
+      "cabage, garlic, black pepper, tomato, pickles, cheese slices, olive oil ",
+    quantity: "360g",
+    protein: "8.0g",
+    fat: "0.04g",
+    carb: "0.5g",
+    sampleURL1:
+      "https://images.unsplash.com/photo-1609126979532-0f514232d1a8?q=80&w=2069&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    sampleURL2:
+      "https://images.unsplash.com/photo-1584966164218-42b0c3225e41?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  },
 ];

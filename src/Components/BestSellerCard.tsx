@@ -20,7 +20,6 @@ export const BestSellerItemCard: React.FC<BestSellerItemCardProps> = ({
     <div className="wrapper">
       <div className="box blury-card">
         <img src={itemsrc} alt={itemalt} />
-
         <div className="frame">
           <h2>{itemtitle}</h2>
           <p>{itemprice} LKR</p>

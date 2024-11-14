@@ -1,70 +1,28 @@
-.services-section {
-    text-align: center;
-    color: #333;
-    margin: 50px auto;
-    /* max-width: 800px; */
-    font-family: Arial, sans-serif;
+.otherservice-section .container {
+  max-width: 100%;
+  margin: 0 auto;
+  overflow: auto;
+}
+.otherservice-section .services .container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 30px;
+  margin-top: 20px;
+  background-color: #a3872d;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  border-top: 3px solid #fff;
+  backdrop-filter: blur(10px);
 }
 
-.services-section h2 {
-    color: #a3872d;
-    font-size: 24px;
-    font-weight: bold;
-}
+@media (max-width: 700px) {
+  .otherservice-section .services .container {
+    grid-template-columns: repeat(2, 1fr);
+  }
 
-.description {
-    color: #777;
-    line-height: 1.6;
-    margin: 0 20px;
-}
-
-.food-delivery {
-    margin-top: 20px;
-}
-
-.food-delivery h3 {
-    font-size: 24px;
-    margin-bottom: 5px;
-    color: #333;
-}
-
-.time {
-    font-size: 40px;
-    font-weight: bold;
-}
-
-.subtext {
-    font-size: 14px;
-    color: #555;
-    margin-top: 5px;
-}
-
-.features {
-    display: flex;
-    justify-content: center;
-    margin-top: 40px;
-}
-
-.feature {
-    flex: 1;
-    padding: 0 20px;
-    text-align: center;
-}
-
-.feature img {
-    width: 50px;
-    height: 50px;
-    margin-bottom: 10px;
-}
-
-.feature h4 {
-    font-size: 18px;
-    font-weight: bold;
-    color: #333;
-}
-
-.feature p {
-    font-size: 14px;
-    color: #777;
-    line-height: 1.4;
+  .otherservice-section .services .container > div:nth-of-type(1),
+  .otherservice-section .services .container > div:nth-of-type(2) {
+    border-bottom: 1px solid rgb(247, 247, 247);
+    padding-bottom: 20px;
+  }
 }

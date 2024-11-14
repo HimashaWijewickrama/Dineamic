@@ -1,66 +1,30 @@
-// OtherServices.tsx
+import React from "react";
 
-import React from 'react';
-import '../Styles/OtherServices.css';
-import DeliveryDiningIcon from '@mui/icons-material/DeliveryDining';
-import Service from './Service';
-import { HomeSectionTitle } from './HomeSectionTitle';
+// material-ui styles
+import { Container } from "@mui/material";
+
+//import custom components
+import { HomeSectionTitle } from "./HomeSectionTitle";
+import OtherServiceCard from "./OtherServiceCard";
+
+//import styles files
+import "../Styles/OtherServices.css";
 
 const OtherServices: React.FC = () => {
-    return (
-        <div className="services-section">
-            <HomeSectionTitle homesectiontitle="WHY CHOOSE US ?"/>
-            <p className="description">
-                We have designed a range of Gift Vouchers, keeping you in mind. It’s perfect for any occasion and can
-                be utilized at any of our hotel’s restaurants or on The Kingsbury Indulgence platform. That’s not all –
-                convenient Laundry Services within 48 hours, are also available for a quick wash, press or dry clean.
-            </p>
-            
-            <div className="food-delivery">
-                <h3>Food orders are delivered daily from</h3>
-                <div className="time">
-                    <span>10.30 A.M.</span> - <span>10.30 P.M.</span>
-                </div>
-                <p className="subtext">Orders placed after 10.30 p.m. will be delivered the following day.</p>
-            </div>
+  return (
+    <div className="otherservice-section">
+      <HomeSectionTitle homesectiontitle="why choose us ?" />
 
-            <div className="features">
-                <Service/>
-                {/* <Feature 
-                    icon="safety-icon.png" 
-                    title="Safety" 
-                    description="Stringent protocols are followed in food preparation and handling"
-                />
-                <Feature 
-                    icon="delivery-icon.png" 
-                    title="Personalised Delivery" 
-                    description="Deliveries are made solely by Hotel staff members"
-                />
-                <DeliveryDiningIcon/>
-                <Feature 
-                    icon=""
-                    title="Quality" 
-                    description="Five-star quality and service"
-                /> */}
-            </div>
-        </div>
-    );
-};
-
-type FeatureProps = {
-    icon: string;
-    title: string;
-    description: string;
-};
-
-const Feature: React.FC<FeatureProps> = ({ icon, title, description }) => {
-    return (
-        <div className="feature">
-            <img src={icon} alt={`${title} Icon`} />
-            <h4>{title}</h4>
-            <p>{description}</p>
-        </div>
-    );
+      <section className="services">
+        <Container className="container">
+          <OtherServiceCard
+            url="https://images.unsplash.com/photo-1611657365907-1ca5d9799f59?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+            alt="Joe Smith"
+          />
+        </Container>
+      </section>
+    </div>
+  );
 };
 
 export default OtherServices;

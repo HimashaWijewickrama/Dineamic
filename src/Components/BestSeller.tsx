@@ -10,7 +10,7 @@ import { sampleProductsData } from "../data/sampleProductsData";
 
 const BestSeller: React.FC = () => {
   const filteredProducts = sampleProductsData.filter(
-    (product) => product.id >= 12 && product.id <= 16
+    (product) => product.id >= 12 && product.id <= 15
   );
 
   return (
