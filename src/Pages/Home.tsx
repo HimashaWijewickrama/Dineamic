@@ -1,4 +1,3 @@
-import AnimatedMultiBtn from "../Components/AnimatedBtn";
 import BestSeller from "../Components/BestSeller";
 import Branches from "../Components/Branches";
 import Counter from "../Components/Counter";
@@ -18,8 +17,7 @@ export default function Home() {
       <FAQ />
       <FeedBack />
       <Branches />
-      <AnimatedMultiBtn/>
-      <NavDownBtn/>
+      <NavDownBtn />
     </>
   );
 }
