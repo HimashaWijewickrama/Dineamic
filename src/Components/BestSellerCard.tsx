@@ -7,14 +7,12 @@ interface BestSellerItemCardProps {
   itemsrc: string;
   itemalt: string;
   itemtitle: string;
-  itemprice: number;
 }
 
 export const BestSellerItemCard: React.FC<BestSellerItemCardProps> = ({
   itemsrc,
   itemalt,
   itemtitle,
-  itemprice,
 }) => {
   return (
     <div className="wrapper">
@@ -22,7 +20,6 @@ export const BestSellerItemCard: React.FC<BestSellerItemCardProps> = ({
         <img src={itemsrc} alt={itemalt} />
         <div className="frame">
           <h2>{itemtitle}</h2>
-          <p>{itemprice} LKR</p>
         </div>
       </div>
     </div>

@@ -7,6 +7,7 @@ import "../Styles/BestSeller.css";
 import { HomeSectionTitle } from "./HomeSectionTitle";
 import { BestSellerItemCard } from "./BestSellerCard";
 import { sampleProductsData } from "../data/sampleProductsData";
+import AnimatedBtn from "./AnimatedBtn";
 
 const BestSeller: React.FC = () => {
   const filteredProducts = sampleProductsData.filter(
@@ -25,10 +26,11 @@ const BestSeller: React.FC = () => {
               itemsrc={product.imageURL}
               itemalt={product.name}
               itemtitle={product.name}
-              itemprice={product.price}
             />
           ))}
         </div>
+        <br />
+        <AnimatedBtn />
       </div>
     </div>
   );

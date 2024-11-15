@@ -1,0 +1,50 @@
+.animated-btn {
+  padding-top: 80px;
+  padding-bottom: 10px;
+}
+
+.animated-btn button {
+  background:
+    linear-gradient(#ebdf6f 0%, #ebdf6f 0%) no-repeat,
+    linear-gradient(#ebdf6f 0%, #ebdf6f 0%) no-repeat,
+    linear-gradient(#ebdf6f 0%, #ebdf6f 0%) no-repeat,
+    linear-gradient(#ebdf6f 0%, #ebdf6f 0%) no-repeat;
+  background-position:
+    -100% 0,
+    200% 0,
+    -100% 100%,
+    200% 100%;
+  background-size: 50.5% 0.25em;
+  box-shadow: 0 0 0 0.2em inset #ebdf6f;
+  color: #a3872d;
+  font-family: "Julius Sans One", serif !important;
+  text-transform: uppercase;
+  font-weight: 700 !important;
+  font-style: normal !important;
+  font-size: 1.8rem;
+  border-radius: 20%;
+  padding: 0.1em 0.6em;
+  border: none;
+  cursor: pointer;
+  transition:
+    background-size 0.4s,
+    background-position 0s 0.4s;
+}
+
+.animated-btn button:hover {
+  background-position:
+    0% 0,
+    100% 0,
+    0% 100%,
+    100% 100%;
+  background-size: 50.5% 50%;
+  transition:
+    background-position 0.4s,
+    background-size 0s;
+}
+
+.animated-btn button:active {
+  box-shadow: 0 0 9px inset #a3872d;
+  background-color: #ebdf6f;
+  color: #a3872d;
+}

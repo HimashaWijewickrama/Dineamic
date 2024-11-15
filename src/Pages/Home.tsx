@@ -1,4 +1,4 @@
-import AnimatedMultiBtn from "../Components/AnimatedMultiBtn";
+import AnimatedMultiBtn from "../Components/AnimatedBtn";
 import BestSeller from "../Components/BestSeller";
 import Branches from "../Components/Branches";
 import ContactForm from "../Components/ContactForm";
