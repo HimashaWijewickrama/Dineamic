@@ -1,7 +1,6 @@
 import AnimatedMultiBtn from "../Components/AnimatedBtn";
 import BestSeller from "../Components/BestSeller";
 import Branches from "../Components/Branches";
-import ContactForm from "../Components/ContactForm";
 import Counter from "../Components/Counter";
 import FAQ from "../Components/FAQ";
 import FeedBack from "../Components/FeedBack";
@@ -17,7 +16,6 @@ export default function Home() {
       <BestSeller />
       <OtherServices />
       <FAQ />
-      <ContactForm />
       <FeedBack />
       <Branches />
       <AnimatedMultiBtn/>
